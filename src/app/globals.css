@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================
+   ChupJer Design System — Tailwind v4
+   Palette is contrast-calibrated:
+   - accent-brand: large text / icons / graphics
+     (light #EA580C on white = 3.56:1 -> graphics only)
+   - accent-solid: button backgrounds
+     (light #C2410C vs #FFF = 5.17:1 -> AA for button labels)
+   - dark accent #FB923C on #0B0F17 = 8.5:1 -> AA everywhere
+   ============================================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
+    sans-serif;
+
+  /* Neutrals (light mode values; overridden under [data-theme="dark"]) */
+  --color-bg: var(--cj-bg);
+  --color-bg-alt: var(--cj-bg-alt);
+  --color-surface: var(--cj-surface);
+  --color-surface-hover: var(--cj-surface-hover);
+  --color-border: var(--cj-border);
+  --color-border-strong: var(--cj-border-strong);
+
+  --color-ink: var(--cj-ink);
+  --color-ink-muted: var(--cj-ink-muted);
+  --color-ink-subtle: var(--cj-ink-subtle);
+
+  /* Accents */
+  --color-brand: var(--cj-accent-brand);
+  --color-brand-hover: var(--cj-accent-brand-hover);
+  --color-brand-solid: var(--cj-accent-solid);
+  --color-brand-tint: var(--cj-accent-tint);
+  --color-brand-ring: var(--cj-accent-ring);
+
+  /* Product identity colours — stable across themes */
+  --color-singgah: #10b981;
+  --color-operations: #f97316;
+  --color-pos: #6366f1;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 0 0 1px var(--cj-border);
+  --shadow-elevated: 0 8px 32px rgb(15 23 42 / 0.08);
+  --shadow-glow: 0 4px 20px var(--cj-accent-glow);
 }
 
+/* ---------- Light ---------- */
+:root,
+[data-theme="light"] {
+  --cj-bg: #fafafb;
+  --cj-bg-alt: #f1f5f9;
+  --cj-surface: #ffffff;
+  --cj-surface-hover: #f8fafc;
+  --cj-border: #e2e8f0;
+  --cj-border-strong: #cbd5e1;
+
+  --cj-ink: #0f172a;
+  --cj-ink-muted: #475569;
+  --cj-ink-subtle: #64748b;
+
+  --cj-accent-brand: #ea580c;
+  --cj-accent-brand-hover: #c2410c;
+  --cj-accent-solid: #c2410c;
+  --cj-accent-tint: #fff7ed;
+  --cj-accent-ring: rgb(234 88 12 / 0.35);
+  --cj-accent-glow: rgb(234 88 12 / 0.12);
+}
+
+/* ---------- Dark ---------- */
+[data-theme="dark"] {
+  --cj-bg: #0b0f17;
+  --cj-bg-alt: #0f1420;
+  --cj-surface: #131722;
+  --cj-surface-hover: #1a1f2e;
+  --cj-border: #272e3f;
+  --cj-border-strong: #38425a;
+
+  --cj-ink: #f8fafc;
+  --cj-ink-muted: #94a3b8;
+  --cj-ink-subtle: #7a879c;
+
+  --cj-accent-brand: #fb923c;
+  --cj-accent-brand-hover: #fdba74;
+  --cj-accent-solid: #fb923c;
+  --cj-accent-tint: rgb(251 146 60 / 0.12);
+  --cj-accent-ring: rgb(251 146 60 / 0.45);
+  --cj-accent-glow: rgb(251 146 60 / 0.18);
+}
+
+/* System preference fallback when no explicit theme is stored */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    --cj-bg: #0b0f17;
+    --cj-bg-alt: #0f1420;
+    --cj-surface: #131722;
+    --cj-surface-hover: #1a1f2e;
+    --cj-border: #272e3f;
+    --cj-border-strong: #38425a;
+
+    --cj-ink: #f8fafc;
+    --cj-ink-muted: #94a3b8;
+    --cj-ink-subtle: #7a879c;
+
+    --cj-accent-brand: #fb923c;
+    --cj-accent-brand-hover: #fdba74;
+    --cj-accent-solid: #fb923c;
+    --cj-accent-tint: rgb(251 146 60 / 0.12);
+    --cj-accent-ring: rgb(251 146 60 / 0.45);
+    --cj-accent-glow: rgb(251 146 60 / 0.18);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Base ---------- */
+@layer base {
+  * {
+    border-color: var(--cj-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sticky navbar offset for anchor navigation */
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--cj-bg);
+    color: var(--cj-ink-muted);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--cj-ink);
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cj-accent-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--cj-accent-brand);
+    color: #fff;
+  }
+}
+
+/* ---------- Reduced motion: disable animation globally ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Utilities ---------- */
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    135deg,
+    var(--cj-accent-brand),
+    var(--cj-accent-brand-hover)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility surface-card {
+  background-color: var(--cj-surface);
+  border: 1px solid var(--cj-border);
+  border-radius: var(--radius-card);
+}
+
+/* Hides horizontal scrollbars on the mobile tab strip */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
