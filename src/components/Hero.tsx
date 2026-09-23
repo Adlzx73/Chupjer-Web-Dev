@@ -1,15 +1,16 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowDown, Check, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { fallbackBrands, hero } from "@/lib/content";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function Hero() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const [index, setIndex] = useState(0);
 
   // Cycle the headline word. Skipped under reduced-motion.

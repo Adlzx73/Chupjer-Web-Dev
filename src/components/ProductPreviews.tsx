@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Check, Coffee, Printer, QrCode, Receipt } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 /**
  * Lightweight DOM/CSS mockups. They animate, theme-switch correctly and
@@ -11,7 +12,7 @@ import { useEffect, useState } from "react";
 
 /* ---------- Singgah: loyalty counter ---------- */
 export function LoyaltyPreview({ color }: { color: string }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const [points, setPoints] = useState(0);
   const target = 150;
 
@@ -82,7 +83,7 @@ export function LoyaltyPreview({ color }: { color: string }) {
 
 /* ---------- Operation: QR -> order progress ---------- */
 export function OrderFlowPreview({ color }: { color: string }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const stages = ["Pending", "Preparing", "Served"] as const;
   const [stage, setStage] = useState(0);
 

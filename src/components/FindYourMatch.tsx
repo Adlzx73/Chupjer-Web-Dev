@@ -1,14 +1,15 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container, SectionHeader } from "@/components/ui/Container";
 import { products, quizSteps, type ProductId } from "@/lib/content";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function FindYourMatch() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const [step, setStep] = useState(0);
   /** option id per step */
   const [answers, setAnswers] = useState<Record<string, string>>({});

@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 type Props = {
   children: ReactNode;
@@ -22,7 +23,7 @@ export function Reveal({
   className,
   once = true,
 }: Props) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   if (reduce) {
     return <div className={className}>{children}</div>;
@@ -51,7 +52,7 @@ export function RevealGroup({
   className?: string;
   stagger?: number;
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   if (reduce) return <div className={className}>{children}</div>;
 
   return (
@@ -77,7 +78,7 @@ export function RevealItem({
   children: ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   if (reduce) return <div className={className}>{children}</div>;
 
   return (

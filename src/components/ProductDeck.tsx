@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Check, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useId, useRef, useState } from "react";
@@ -12,9 +12,10 @@ import {
 import { ButtonLink } from "@/components/ui/Button";
 import { Container, SectionHeader } from "@/components/ui/Container";
 import { products, type Product, type ProductId } from "@/lib/content";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function ProductDeck() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const [active, setActive] = useState<ProductId>("operations");
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const uid = useId();

@@ -4,6 +4,9 @@ import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { site, whatsappUrl } from "@/lib/content";
 
+/** Evaluated once per server render, not during hydration. */
+const SERVER_YEAR = new Date().getFullYear();
+
 const columns = [
   {
     title: "Product",
@@ -103,7 +106,10 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-border py-6 text-xs text-ink-subtle sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          {/* Computed once at module load on the server, so the server-rendered
+              year is the single source of truth and never mismatches on the
+              client (a mid-render new Date() can straddle a timezone boundary). */}
+          <p>&copy; {SERVER_YEAR} {site.name}. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="#faq" className="transition-colors hover:text-brand">
               FAQ
