@@ -1,15 +1,19 @@
 import { CalendarCheck, Clock, MessageCircle, Users } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { LeadForm } from "@/components/LeadForm";
+import { getTranslations } from "next-intl/server";
 import { whatsappUrl } from "@/lib/content";
 
-const assurances = [
-  { icon: Clock, title: "10 minutes", desc: "A focused walkthrough, not a sales marathon." },
-  { icon: Users, title: "Your menu, live", desc: "We demo with your actual setup wherever possible." },
-  { icon: CalendarCheck, title: "You pick the time", desc: "Morning, night, weekend — we work around service hours." },
-];
+export async function DemoCTA() {
+  const t = await getTranslations("demo");
+  const tWhatsapp = await getTranslations("whatsapp");
+  const whatsappHref = whatsappUrl(tWhatsapp("general"));
+  const assurances = [
+    { icon: Clock, title: t("assurances.time.title"), desc: t("assurances.time.desc") },
+    { icon: Users, title: t("assurances.menu.title"), desc: t("assurances.menu.desc") },
+    { icon: CalendarCheck, title: t("assurances.schedule.title"), desc: t("assurances.schedule.desc") },
+  ];
 
-export function DemoCTA() {
   return (
     <section
       id="demo"
@@ -19,14 +23,13 @@ export function DemoCTA() {
         <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="lg:sticky lg:top-24">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Book a demo
+              {t("eyebrow")}
             </p>
             <h2 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
-              See Chupjer run your cafe — in 10 minutes.
+              {t("title")}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-muted">
-              Tell us a little about your business and we&apos;ll show you exactly
-              how the system would work for you. No commitment, no card required.
+              {t("subtitle")}
             </p>
 
             <ul className="mt-8 space-y-4">
@@ -44,13 +47,13 @@ export function DemoCTA() {
             </ul>
 
             <a
-              href={whatsappUrl()}
+              href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-border-strong hover:bg-surface-hover"
             >
               <MessageCircle size={16} aria-hidden />
-              Prefer WhatsApp? Chat now
+              {t("preferWhatsapp")}
             </a>
           </div>
 

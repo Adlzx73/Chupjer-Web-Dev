@@ -1,0 +1,536 @@
+{
+  "site": {
+    "tagline": "The All-in-One Business Platform for Malaysia",
+    "footerBlurb": "The all-in-one business platform for Malaysian cafes, kopitiams and eateries."
+  },
+  "metadata": {
+    "title": "Chupjer — The All-in-One Business Platform for Malaysia",
+    "titleTemplate": "%s | Chupjer",
+    "description": "From online ordering to point-of-sale, kitchen display to loyalty programs — Chupjer is the all-in-one platform for modern Malaysian businesses. Starting from RM150/mo.",
+    "ogDescription": "Online ordering, POS, kitchen display, loyalty, analytics — all connected. Starting from RM150/mo.",
+    "twitterTitle": "Chupjer — All-in-One Business Platform",
+    "manifestName": "The All-in-One Business Platform for Malaysia",
+    "manifestDescription": "Online ordering, POS, kitchen display, loyalty and analytics for Malaysian cafes."
+  },
+  "lang": {
+    "switchTo": "Switch to Bahasa Melayu",
+    "current": "Language: English"
+  },
+  "nav": {
+    "products": "Products",
+    "compare": "Compare",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "bookDemo": "Book Demo",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu",
+    "mainNav": "Main",
+    "mobileNav": "Mobile",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "eyebrow": "Built for Malaysian cafes, kopitiams & eateries",
+    "headline": "The Operating System for Modern Cafes & Eateries.",
+    "subheadline": "Everything your cafe needs from grab-and-go loyalty to seamless QR table orders and counter POS. Zero enterprise headaches.",
+    "primaryCta": "Book a 10-Min Live Demo",
+    "secondaryCta": "Explore the 3 Packages",
+    "trustHeading": "Trusted by artisan cafes, kopitiams, and food spots across Malaysia.",
+    "cyclingWords": [
+      "Double your sales.",
+      "Cut the chaos.",
+      "Grow your regulars.",
+      "Own your brand.",
+      "Scale with confidence."
+    ],
+    "proofPoints": [
+      "Free onboarding included",
+      "Same-day launch",
+      "No app download needed"
+    ],
+    "mock": {
+      "ordersToday": "Orders today",
+      "revenue": "Revenue",
+      "avgTicket": "Avg ticket",
+      "dashboardAlt": "Chupjer operations dashboard",
+      "sarahPoints": "Sarah's points",
+      "rewardUnlocked": "Free Oat Latte unlocked"
+    }
+  },
+  "products": {
+    "section": {
+      "eyebrow": "The 3 Packages",
+      "title": "One Platform. Three Ways to Run Your Business.",
+      "subtitle": "Mix and match what you need. Every package works standalone and connects seamlessly when you're ready to scale.",
+      "tablistLabel": "Chupjer packages",
+      "seeInAction": "See {name} in action",
+      "compareCapabilities": "Compare capabilities"
+    },
+    "items": {
+      "singgah": {
+        "name": "Singgah",
+        "shortName": "Singgah",
+        "tagline": "Takeaway & Loyalty",
+        "persona": "Best for Takeaway Kiosks, Coffee Bars & Growing Cafes",
+        "hook": "Turn first-time walk-ins into loyal regulars.",
+        "description": "Beautiful branded storefronts that let your customers order, pay, and earn rewards — all from their phone. No downloads needed.",
+        "features": {
+          "noApp": {
+            "title": "No App Download Required",
+            "desc": "Works straight in the browser. PWA-ready for home-screen installs."
+          },
+          "loyalty": {
+            "title": "Digital Loyalty & Points Engine",
+            "desc": "Earn points per RM spent, with automated birthday treats & cash vouchers."
+          },
+          "pickup": {
+            "title": "Instant Grab-and-Go Pickup",
+            "desc": "Let customers order ahead and skip the queue entirely."
+          },
+          "menu": {
+            "title": "Mobile Digital Menu",
+            "desc": "Clean take-out menu with modifiers, add-ons and live availability."
+          }
+        },
+        "showcase": {
+          "perks": "Singgah perks & rewards page",
+          "home": "Singgah store homepage",
+          "menu": "Singgah digital menu"
+        }
+      },
+      "operations": {
+        "name": "Operations",
+        "shortName": "Operation",
+        "tagline": "Dine-in & Kitchen",
+        "persona": "Best for Busy Dine-in Eateries & Table Service",
+        "hook": "Eliminate peak-hour order chaos without hiring more waitstaff.",
+        "description": "Manage staff, inventory, analytics, and multi-location settings from one powerful dashboard. Built for owners who want control.",
+        "features": {
+          "qr": {
+            "title": "Contactless QR Table Ordering",
+            "desc": "Customers scan and order with full modifier options — sugar, ice, add-ons."
+          },
+          "kot": {
+            "title": "Direct Kitchen/Bar Routing (KOT)",
+            "desc": "Orders fly straight to the barista or kitchen display the moment they're placed."
+          },
+          "progress": {
+            "title": "Real-time Order Progress",
+            "desc": "Track every ticket as it moves Pending → Preparing → Served."
+          },
+          "checkout": {
+            "title": "Instant Cashless Checkout",
+            "desc": "FPX and e-wallet payments settled right at the table."
+          }
+        },
+        "showcase": {
+          "dashboard": "Operations dashboard",
+          "analytics": "Operations analytics",
+          "menu": "Menu management"
+        }
+      },
+      "pos": {
+        "name": "POS System",
+        "shortName": "POS System",
+        "tagline": "Counter & Hardware",
+        "persona": "Best for Counter Cashiers, Multi-Station & Full Operations",
+        "hook": "The rock-solid nerve center for your cashier counter and cash drawer.",
+        "description": "A fast, intuitive POS that runs natively on Android tablets and phones. iPad and iPhone users can access the full webapp — native iOS app coming soon. Supports thermal printers, kitchen displays, and customer-facing screens.",
+        "features": {
+          "speed": {
+            "title": "Ultra-fast Counter Checkout",
+            "desc": "Quick item taps built for rush — no lag between customers."
+          },
+          "hardware": {
+            "title": "Full Hardware Support",
+            "desc": "Thermal receipt printers, cash drawers and barcode scanners."
+          },
+          "shift": {
+            "title": "Shift Handovers & Cash Float",
+            "desc": "Track float, hand over between shifts, reconcile end-of-day X/Z reports."
+          },
+          "analytics": {
+            "title": "Revenue, Tax & Sales Analytics",
+            "desc": "Comprehensive reporting with SST-ready breakdowns."
+          }
+        },
+        "showcase": {
+          "checkout": "POS checkout screen",
+          "menu": "POS menu screen",
+          "cfd": "Customer facing display"
+        }
+      }
+    }
+  },
+  "productPreviews": {
+    "loyalty": {
+      "greeting": "Hi Sarah!",
+      "member": "Member",
+      "pts": "pts",
+      "rewardUnlocked": "Reward unlocked",
+      "ptsToGo": "{count} pts to go",
+      "claim": "Claim Free Oat Latte"
+    },
+    "orderFlow": {
+      "tableLabel": "Table 4 · Dine-in",
+      "orderItems": "2× Flat White · 1× Croissant",
+      "stages": {
+        "pending": "Pending",
+        "preparing": "Preparing",
+        "served": "Served"
+      },
+      "routedTo": "Routed to bar station"
+    },
+    "pos": {
+      "counterLabel": "Counter · Till 1",
+      "drawerOpen": "Drawer open",
+      "items": {
+        "flatWhite": "Flat White",
+        "croissant": "Croissant",
+        "longBlack": "Long Black"
+      },
+      "total": "Total",
+      "charge": "Charge RM{amount}",
+      "print": "Print"
+    }
+  },
+  "matrix": {
+    "section": {
+      "eyebrow": "Capabilities Matrix",
+      "title": "See exactly what you get.",
+      "subtitle": "No asterisks, no surprises. Here's the full breakdown of what each package includes.",
+      "caption": "Comparison of Chupjer package capabilities",
+      "capability": "Capability",
+      "included": "Included",
+      "addon": "Available as add-on",
+      "notIncluded": "Not included",
+      "legendIncluded": "Included",
+      "legendAddon": "Add-on available",
+      "legendNotIncluded": "Not included"
+    },
+    "rows": {
+      "menuLink": "Digital Menu Link",
+      "loyalty": "Customer Loyalty & Points (CRM)",
+      "qrDineIn": "Table QR Code Dine-in Ordering",
+      "kot": "Kitchen/Bar Station Display (KOT)",
+      "cashier": "Cashier Terminal & Counter Sales",
+      "hardware": "Hardware Link (Cash Drawer, Thermal Printer)",
+      "cashFloat": "Daily Cash Float & Z-Reading Reports"
+    }
+  },
+  "quiz": {
+    "section": {
+      "eyebrow": "Find Your Match",
+      "title": "Not sure which package fits?",
+      "subtitle": "Answer two quick questions and we'll point you to the right starting point.",
+      "progress": "Question {current} of {total}",
+      "yourMatch": "Your match",
+      "seePricing": "See pricing",
+      "bookDemo": "Book a demo",
+      "startOver": "Start over"
+    },
+    "steps": {
+      "type": {
+        "question": "What type of F&B business do you run?",
+        "options": {
+          "kiosk": {
+            "label": "Coffee Kiosk / Grab & Go",
+            "desc": "Small footprint, fast turnover, mostly takeaway."
+          },
+          "dinein": {
+            "label": "Dine-In Cafe / Bistro",
+            "desc": "Tables, sit-down service, peak lunch crowds."
+          },
+          "restaurant": {
+            "label": "Full Restaurant / Chain",
+            "desc": "Multiple stations, several outlets, full counter ops."
+          }
+        }
+      },
+      "pain": {
+        "question": "What is your biggest daily headache?",
+        "options": {
+          "retention": {
+            "label": "Customer retention & loyalty",
+            "desc": "People come once and never return."
+          },
+          "peak": {
+            "label": "Slow order taking during peak rush",
+            "desc": "Queues build up and staff can't keep pace."
+          },
+          "billing": {
+            "label": "Messy counter billing & cash tracking",
+            "desc": "End-of-day reconciliation never balances."
+          }
+        }
+      }
+    }
+  },
+  "roi": {
+    "section": {
+      "eyebrow": "ROI Calculator",
+      "title": "What does Chupjer actually pay back?",
+      "subtitle": "Drag the sliders to match your business. We show the maths — including the costs."
+    },
+    "ordersLabel": "Orders per day",
+    "perDay": "{value} / day",
+    "avgTicketLabel": "Average order value",
+    "locationsLabel": "Locations",
+    "oneLocation": "1 location",
+    "manyLocations": "{count} locations",
+    "howTitle": "How we calculate this",
+    "how1": "+12% order volume from online ordering & repeat visits",
+    "how2": "6 hrs/week of admin saved, valued at RM25/hr",
+    "how3": "Less your subscription and the 2% platform fee",
+    "disclaimer": "Illustrative estimate based on typical Chupjer customers.",
+    "estimatedGain": "Estimated monthly gain",
+    "recommendedPlan": "Recommended plan",
+    "subscription": "Subscription",
+    "perMonth": "RM{amount}/mo",
+    "paysForItself": "Pays for itself in",
+    "days": "{count} days",
+    "getEstimate": "Get a personalised estimate"
+  },
+  "why": {
+    "section": {
+      "eyebrow": "Why Chupjer",
+      "title": "Built for how Malaysian F&B actually operates.",
+      "subtitle": "Not another generic SaaS. Every feature was shaped by cafe owners on the ground."
+    },
+    "points": {
+      "malaysia": {
+        "title": "Built for Malaysia",
+        "desc": "DuitNow, FPX, Touch 'n Go, GrabPay, Boost — all supported natively. MYR pricing, BM-ready, SST compliant."
+      },
+      "whiteLabel": {
+        "title": "White-label Everything",
+        "desc": "Your brand, your domain, your colors. Customers see your identity — not ours."
+      },
+      "launch": {
+        "title": "Same-Day Launch",
+        "desc": "Sign up, set your menu, share the QR. We handle onboarding — no developer needed."
+      },
+      "security": {
+        "title": "Enterprise-Grade Security",
+        "desc": "Row-level security, encrypted connections, SOC 2 infrastructure via Supabase."
+      },
+      "marketing": {
+        "title": "We Market For You",
+        "desc": "We run targeted campaigns, social media ads, and seasonal promos to bring foot traffic to your door. Your 2% platform fee funds it all."
+      },
+      "offline": {
+        "title": "Works Offline",
+        "desc": "POS keeps taking orders even when WiFi drops. Auto-syncs when connection returns."
+      }
+    }
+  },
+  "testimonials": {
+    "section": {
+      "eyebrow": "Testimonials",
+      "title": "Loved by cafe owners across Malaysia."
+    },
+    "items": {
+      "shhine": {
+        "quote": "Chupjer transformed how we run our cafe. Online ordering through Singgah doubled our takeaway sales in the first month."
+      },
+      "twentyone": {
+        "quote": "The POS system is fast and intuitive. My staff learned it within an hour. The kitchen display system alone saved us from so many missed orders."
+      },
+      "roag": {
+        "quote": "Managing multiple outlets used to be chaos. Now I see everything from one dashboard — sales, inventory, staff schedules. It just works."
+      }
+    }
+  },
+  "pricing": {
+    "section": {
+      "eyebrow": "Pricing",
+      "title": "Transparent pricing. No surprises.",
+      "subtitle": "Every plan includes the full platform, onboarding and support. Payment gateway fees are separate and shown below.",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "toggleYearly": "Toggle yearly billing",
+      "twoMonthsFree": "2 months free",
+      "mostPopular": "Most popular",
+      "perMonth": "/mo",
+      "billedYearly": "RM{amount} billed yearly"
+    },
+    "plans": {
+      "cafe": {
+        "name": "Cafe",
+        "subtitle": "Single Location",
+        "description": "Everything you need to run a single outlet — from POS to online ordering.",
+        "features": [
+          "Operations Dashboard",
+          "POS System",
+          "Singgah App (Online Ordering)",
+          "Kitchen Display System",
+          "Analytics & Reporting",
+          "HR & Staff Management",
+          "Inventory Management",
+          "Loyalty & Rewards",
+          "2% Growth Fee (incl. marketing)",
+          "1 Location"
+        ],
+        "cta": "Chat with Us"
+      },
+      "empayar": {
+        "name": "Empayar",
+        "subtitle": "Multi-Location",
+        "description": "Scale across multiple outlets with centralised control and analytics.",
+        "features": [
+          "Everything in Cafe",
+          "Up to 3 Locations",
+          "Multi-location Analytics",
+          "Priority Support",
+          "Advanced Reporting"
+        ],
+        "cta": "Let's Talk Growth"
+      },
+      "franchise": {
+        "name": "Franchise",
+        "subtitle": "10-Location Bundle",
+        "description": "Built for franchise operators who need dedicated support and scale.",
+        "features": [
+          "Everything in Empayar",
+          "Up to 10 Locations",
+          "Franchise-level Analytics",
+          "Dedicated Account Manager",
+          "Priority Onboarding",
+          "Custom Integrations"
+        ],
+        "cta": "Book a Consultation"
+      }
+    },
+    "gateway": {
+      "title": "Payment gateway fees (via Chip-In)",
+      "note": "These go to the payment provider, not Chupjer. Payouts are settled directly to your bank within 2 working days."
+    },
+    "gatewayFees": {
+      "fpx": "FPX (Online Banking)",
+      "creditCard": "Credit Card",
+      "debitCard": "Debit Card",
+      "ewallet": "E-Wallets",
+      "duitnow": "DuitNow QR",
+      "bnpl": "Buy Now Pay Later",
+      "fpxFee": "RM1 per transaction",
+      "percent2": "2.0%",
+      "percent1": "1.0%",
+      "percent14": "1.4%",
+      "percent16": "1.6%",
+      "percent53": "5.3%"
+    }
+  },
+  "faq": {
+    "section": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "subtitle": "Still unsure? Message us on WhatsApp — we reply fast."
+    },
+    "items": {
+      "q1": {
+        "q": "How long does setup take?",
+        "a": "Most businesses are up and running within the same day. We handle onboarding — you just need your menu and business details ready."
+      },
+      "q2": {
+        "q": "Are there long-term contracts?",
+        "a": "We operate on a yearly subscription model. After your first year, you can renew annually or switch plans — no long-term lock-in beyond the current year."
+      },
+      "q3": {
+        "q": "Which devices can I use?",
+        "a": "Our POS runs natively on Android tablets and phones, with webapp support for iPad and iPhone (native iOS coming soon). We support Sunmi, iMin, and most standard thermal printers and kitchen display setups."
+      },
+      "q4": {
+        "q": "Can I stop if I don't want to continue?",
+        "a": "Since we operate on yearly plans, you can choose not to renew at the end of your subscription year — no penalty. We'll help you export your data within 30 days."
+      },
+      "q5": {
+        "q": "What payment options are available?",
+        "a": "We support FPX (online banking), credit/debit cards, DuitNow QR, e-wallets (Touch 'n Go, GrabPay, Boost), and Buy Now Pay Later — all via our payment partner Chip-in Asia."
+      },
+      "q6": {
+        "q": "What if I run into an issue?",
+        "a": "Every plan includes WhatsApp support. Empayar and Franchise plans get priority support with faster response times. We also have a dedicated account manager for Franchise clients."
+      },
+      "q7": {
+        "q": "What is the 2% platform fee for?",
+        "a": "Your 2% platform fee isn't just a fee — it funds marketing campaigns that bring customers to your door. We run targeted social media ads, seasonal promos (Raya, Merdeka, year-end), feature your store on the Singgah discovery platform, and provide campaign performance reports. Other platforms charge 30–35% commission and don't even market for you."
+      },
+      "q8": {
+        "q": "I have many outlets — can I manage them all at once?",
+        "a": "Absolutely. Our Empayar plan supports up to 3 locations, and Franchise supports up to 10. All managed from a single Operations dashboard with cross-location analytics."
+      },
+      "q9": {
+        "q": "Does Chupjer handle SST?",
+        "a": "Chupjer is fully SST compliant. You can configure tax settings per location, and all receipts and reports include proper SST breakdowns."
+      }
+    }
+  },
+  "demo": {
+    "eyebrow": "Book a demo",
+    "title": "See Chupjer run your cafe — in 10 minutes.",
+    "subtitle": "Tell us a little about your business and we'll show you exactly how the system would work for you. No commitment, no card required.",
+    "assurances": {
+      "time": {
+        "title": "10 minutes",
+        "desc": "A focused walkthrough, not a sales marathon."
+      },
+      "menu": {
+        "title": "Your menu, live",
+        "desc": "We demo with your actual setup wherever possible."
+      },
+      "schedule": {
+        "title": "You pick the time",
+        "desc": "Morning, night, weekend — we work around service hours."
+      }
+    },
+    "preferWhatsapp": "Prefer WhatsApp? Chat now"
+  },
+  "form": {
+    "yourName": "Your name",
+    "businessName": "Business name",
+    "whatsappNumber": "WhatsApp number",
+    "emailOptional": "Email (optional)",
+    "interestedIn": "Interested in",
+    "notSureYet": "Not sure yet",
+    "locations": "Number of locations",
+    "sending": "Sending…",
+    "submit": "Book my free demo",
+    "privacyNote": "No spam, no hard sell. We'll show you the system and answer your questions.",
+    "successTitle": "Demo request received!",
+    "successBody": "We'll reach out on WhatsApp within one business hour to lock in a time that suits you.",
+    "messageUsNow": "Message us now",
+    "fallbackError": "Something went wrong. Please try again.",
+    "networkError": "Network error. Please try again or message us on WhatsApp."
+  },
+  "api": {
+    "invalidJson": "Invalid request. Please try again.",
+    "requiredFields": "Name, business name and phone are required.",
+    "invalidPhone": "Please enter a valid phone number.",
+    "saveFailed": "Could not save your details. Please try WhatsApp instead."
+  },
+  "whatsapp": {
+    "general": "Hi, I'm interested in Chupjer. Can you tell me more?",
+    "withPlan": "Hi, I'm interested in the Chupjer {plan} plan ({tier}). Can you tell me more?"
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "getInTouch": "Get in touch",
+    "singgah": "Singgah",
+    "operations": "Operations",
+    "posSystem": "POS System",
+    "compare": "Compare",
+    "pricing": "Pricing",
+    "whyChupjer": "Why Chupjer",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "bookDemo": "Book a demo",
+    "allRightsReserved": "All rights reserved."
+  },
+  "notFound": {
+    "title": "This page went for a coffee break.",
+    "body": "The page you're looking for doesn't exist. Let's get you back to the good stuff.",
+    "backHome": "Back to homepage",
+    "chatWithUs": "Chat with us"
+  }
+}

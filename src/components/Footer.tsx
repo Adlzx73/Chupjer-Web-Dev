@@ -1,35 +1,40 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { site, whatsappUrl } from "@/lib/content";
+import { getTranslations } from "next-intl/server";
 
 /** Evaluated once per server render, not during hydration. */
 const SERVER_YEAR = new Date().getFullYear();
 
-const columns = [
-  {
-    title: "Product",
-    links: [
-      { label: "Singgah", href: "#products" },
-      { label: "Operations", href: "#products" },
-      { label: "POS System", href: "#products" },
-      { label: "Compare", href: "#compare" },
-      { label: "Pricing", href: "#pricing" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "Why Chupjer", href: "#why" },
-      { label: "Testimonials", href: "#testimonials" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Book a demo", href: "#demo" },
-    ],
-  },
-];
+export async function Footer() {
+  const t = await getTranslations("footer");
+  const tSite = await getTranslations("site");
+  const tWhatsapp = await getTranslations("whatsapp");
+  const whatsappHref = whatsappUrl(tWhatsapp("general"));
 
-export function Footer() {
+  const columns = [
+    {
+      title: t("product"),
+      links: [
+        { label: t("singgah"), href: "#products" },
+        { label: t("operations"), href: "#products" },
+        { label: t("posSystem"), href: "#products" },
+        { label: t("compare"), href: "#compare" },
+        { label: t("pricing"), href: "#pricing" },
+      ],
+    },
+    {
+      title: t("company"),
+      links: [
+        { label: t("whyChupjer"), href: "#why" },
+        { label: t("testimonials"), href: "#testimonials" },
+        { label: t("faq"), href: "#faq" },
+        { label: t("bookDemo"), href: "#demo" },
+      ],
+    },
+  ];
+
   return (
     <footer className="border-t border-border bg-surface">
       <Container>
@@ -49,8 +54,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-muted">
-              The all-in-one business platform for Malaysian cafes, kopitiams and
-              eateries.
+              {tSite("footerBlurb")}
             </p>
             <p className="mt-4 text-xs text-ink-subtle">{site.legalName}</p>
           </div>
@@ -75,11 +79,11 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-ink">Get in touch</h3>
+            <h3 className="text-sm font-semibold text-ink">{t("getInTouch")}</h3>
             <ul className="mt-3 space-y-2.5">
               <li>
                 <a
-                  href={whatsappUrl()}
+                  href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-ink-muted transition-colors hover:text-brand"
@@ -109,14 +113,14 @@ export function Footer() {
           {/* Computed once at module load on the server, so the server-rendered
               year is the single source of truth and never mismatches on the
               client (a mid-render new Date() can straddle a timezone boundary). */}
-          <p>&copy; {SERVER_YEAR} {site.name}. All rights reserved.</p>
+          <p>&copy; {SERVER_YEAR} {site.name}. {t("allRightsReserved")}</p>
           <div className="flex gap-4">
-            <Link href="#faq" className="transition-colors hover:text-brand">
-              FAQ
-            </Link>
-            <Link href="#pricing" className="transition-colors hover:text-brand">
-              Pricing
-            </Link>
+            <a href="#faq" className="transition-colors hover:text-brand">
+              {t("faq")}
+            </a>
+            <a href="#pricing" className="transition-colors hover:text-brand">
+              {t("pricing")}
+            </a>
             <a
               href={site.threads}
               target="_blank"

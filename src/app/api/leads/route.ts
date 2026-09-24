@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
+import { getTranslations } from "next-intl/server";
+import { hasLocale } from "next-intl";
 import { getSupabase, type Lead } from "@/lib/supabase";
+import { routing } from "@/i18n/routing";
 
 /** Basic MY phone normalisation: 0123456789 -> +60123456789 */
 function normalisePhone(raw: string) {
@@ -9,12 +12,22 @@ function normalisePhone(raw: string) {
   return `+60${digits.replace(/^6/, "")}`;
 }
 
+/** Resolves the lead's locale from the NEXT_LOCALE cookie set by the site. */
+function requestLocale(request: Request): "en" | "ms" {
+  const cookie = request.headers
+    .get("cookie")
+    ?.match(/(?:^|;\s*)NEXT_LOCALE=([^;]+)/)?.[1];
+  return hasLocale(routing.locales, cookie) ? (cookie as "en" | "ms") : routing.defaultLocale;
+}
+
 export async function POST(request: Request) {
+  const t = await getTranslations({ locale: requestLocale(request), namespace: "api" });
+
   let body: Record<string, unknown>;
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json({ error: t("invalidJson") }, { status: 400 });
   }
 
   const name = String(body.name ?? "").trim();
@@ -22,17 +35,11 @@ export async function POST(request: Request) {
   const phone = String(body.phone ?? "").trim();
 
   if (!name || !businessName || !phone) {
-    return NextResponse.json(
-      { error: "Name, business name and phone are required." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: t("requiredFields") }, { status: 400 });
   }
 
   if (phone.replace(/[^\d]/g, "").length < 9) {
-    return NextResponse.json(
-      { error: "Please enter a valid phone number." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: t("invalidPhone") }, { status: 400 });
   }
 
   const lead: Lead = {
@@ -57,10 +64,7 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error("[leads] insert failed:", error.message);
-    return NextResponse.json(
-      { error: "Could not save your details. Please try WhatsApp instead." },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: t("saveFailed") }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, persisted: true });

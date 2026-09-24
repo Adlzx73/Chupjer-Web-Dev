@@ -1,11 +1,13 @@
 "use client";
 
 import { Check, Minus, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { matrixRows, products, type MatrixValue } from "@/lib/content";
 
 function Cell({ value }: { value: MatrixValue }) {
+  const t = useTranslations("matrix.section");
   const common = "flex h-6 w-6 items-center justify-center rounded-full";
   if (value === true) {
     return (
@@ -13,7 +15,7 @@ function Cell({ value }: { value: MatrixValue }) {
         <span className={`${common} bg-brand-tint text-brand`}>
           <Check size={14} aria-hidden />
         </span>
-        <span className="sr-only">Included</span>
+        <span className="sr-only">{t("included")}</span>
       </>
     );
   }
@@ -23,7 +25,7 @@ function Cell({ value }: { value: MatrixValue }) {
         <span className={`${common} bg-[#8b5cf61a] text-[#8b5cf6]`}>
           <Plus size={14} aria-hidden />
         </span>
-        <span className="sr-only">Available as add-on</span>
+        <span className="sr-only">{t("addon")}</span>
       </>
     );
   }
@@ -32,26 +34,29 @@ function Cell({ value }: { value: MatrixValue }) {
       <span className={`${common} bg-bg-alt text-ink-subtle`}>
         <Minus size={14} aria-hidden />
       </span>
-      <span className="sr-only">Not included</span>
+      <span className="sr-only">{t("notIncluded")}</span>
     </>
   );
 }
 
 export function ComparisonMatrix() {
+  const t = useTranslations("matrix");
+  const tProducts = useTranslations("products.items");
+
   return (
     <section id="compare" className="scroll-mt-24 py-20">
       <Container>
         <SectionHeader
-          eyebrow="Capabilities Matrix"
-          title="See exactly what you get."
-          subtitle="No asterisks, no surprises. Here's the full breakdown of what each package includes."
+          eyebrow={t("section.eyebrow")}
+          title={t("section.title")}
+          subtitle={t("section.subtitle")}
         />
 
         <Reveal>
           <div className="mt-10 overflow-x-auto rounded-2xl border border-border bg-surface shadow-card">
             <table className="w-full min-w-[560px] border-collapse text-left">
               <caption className="sr-only">
-                Comparison of Chupjer package capabilities
+                {t("section.caption")}
               </caption>
               <thead>
                 <tr className="border-b border-border">
@@ -59,7 +64,7 @@ export function ComparisonMatrix() {
                     scope="col"
                     className="px-5 py-4 text-sm font-semibold text-ink"
                   >
-                    Capability
+                    {t("section.capability")}
                   </th>
                   {products.map((p) => (
                     <th
@@ -73,7 +78,7 @@ export function ComparisonMatrix() {
                           style={{ background: p.color }}
                           aria-hidden
                         />
-                        {p.name}
+                        {tProducts(`${p.id}.name`)}
                       </span>
                     </th>
                   ))}
@@ -82,14 +87,14 @@ export function ComparisonMatrix() {
               <tbody>
                 {matrixRows.map((row) => (
                   <tr
-                    key={row.capability}
+                    key={row.key}
                     className="border-b border-border last:border-0 hover:bg-surface-hover"
                   >
                     <th
                       scope="row"
                       className="px-5 py-3.5 text-sm font-medium text-ink-muted"
                     >
-                      {row.capability}
+                      {t(`rows.${row.key}`)}
                     </th>
                     <td className="px-3 py-3.5 text-center">
                       <div className="flex justify-center">
@@ -115,13 +120,13 @@ export function ComparisonMatrix() {
 
         <p className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-ink-subtle">
           <span className="flex items-center gap-1.5">
-            <Check size={13} className="text-brand" aria-hidden /> Included
+            <Check size={13} className="text-brand" aria-hidden /> {t("section.legendIncluded")}
           </span>
           <span className="flex items-center gap-1.5">
-            <Plus size={13} className="text-[#8b5cf6]" aria-hidden /> Add-on available
+            <Plus size={13} className="text-[#8b5cf6]" aria-hidden /> {t("section.legendAddon")}
           </span>
           <span className="flex items-center gap-1.5">
-            <Minus size={13} aria-hidden /> Not included
+            <Minus size={13} aria-hidden /> {t("section.legendNotIncluded")}
           </span>
         </p>
       </Container>

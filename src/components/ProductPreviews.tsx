@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Check, Coffee, Printer, QrCode, Receipt } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 /**
@@ -12,6 +13,7 @@ import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 /* ---------- Singgah: loyalty counter ---------- */
 export function LoyaltyPreview({ color }: { color: string }) {
+  const t = useTranslations("productPreviews.loyalty");
   const reduce = useReducedMotionSafe();
   const [points, setPoints] = useState(0);
   const target = 150;
@@ -44,19 +46,19 @@ export function LoyaltyPreview({ color }: { color: string }) {
             <Coffee size={15} aria-hidden />
           </div>
           <div>
-            <p className="text-sm font-semibold text-ink">Hi Sarah!</p>
+            <p className="text-sm font-semibold text-ink">{t("greeting")}</p>
             <p className="text-[11px] text-ink-subtle">TwentyOne.cafe</p>
           </div>
         </div>
         <span className="rounded-full bg-brand-tint px-2 py-0.5 text-[10px] font-semibold text-brand">
-          Member
+          {t("member")}
         </span>
       </div>
 
       <div className="mt-4 rounded-lg bg-bg-alt p-3 text-center">
         <p className="text-3xl font-bold" style={{ color }}>
           {points}
-          <span className="ml-1 text-sm font-medium text-ink-subtle">pts</span>
+          <span className="ml-1 text-sm font-medium text-ink-subtle">{t("pts")}</span>
         </p>
         <div className="mt-2 h-2 overflow-hidden rounded-full bg-border">
           <div
@@ -65,7 +67,7 @@ export function LoyaltyPreview({ color }: { color: string }) {
           />
         </div>
         <p className="mt-1.5 text-[10px] text-ink-subtle">
-          {points >= target ? "Reward unlocked" : `${target - points} pts to go`}
+          {points >= target ? t("rewardUnlocked") : t("ptsToGo", { count: target - points })}
         </p>
       </div>
 
@@ -75,7 +77,7 @@ export function LoyaltyPreview({ color }: { color: string }) {
         className="mt-3 w-full rounded-lg py-2.5 text-xs font-semibold text-white transition-opacity disabled:opacity-45"
         style={{ background: color }}
       >
-        Claim Free Oat Latte
+        {t("claim")}
       </button>
     </div>
   );
@@ -83,8 +85,9 @@ export function LoyaltyPreview({ color }: { color: string }) {
 
 /* ---------- Operation: QR -> order progress ---------- */
 export function OrderFlowPreview({ color }: { color: string }) {
+  const t = useTranslations("productPreviews.orderFlow");
   const reduce = useReducedMotionSafe();
-  const stages = ["Pending", "Preparing", "Served"] as const;
+  const stages = ["pending", "preparing", "served"] as const;
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
@@ -106,10 +109,8 @@ export function OrderFlowPreview({ color }: { color: string }) {
           <QrCode size={22} aria-hidden />
         </div>
         <div>
-          <p className="text-sm font-semibold text-ink">Table 4 · Dine-in</p>
-          <p className="text-[11px] text-ink-subtle">
-            2× Flat White · 1× Croissant
-          </p>
+          <p className="text-sm font-semibold text-ink">{t("tableLabel")}</p>
+          <p className="text-[11px] text-ink-subtle">{t("orderItems")}</p>
         </div>
       </div>
 
@@ -134,7 +135,7 @@ export function OrderFlowPreview({ color }: { color: string }) {
                   active ? "font-semibold text-ink" : "text-ink-subtle"
                 }`}
               >
-                {s}
+                {t(`stages.${s}`)}
               </span>
               {active && !reduce && (
                 <motion.span
@@ -150,7 +151,7 @@ export function OrderFlowPreview({ color }: { color: string }) {
       </div>
 
       <div className="mt-4 flex items-center justify-between rounded-lg bg-bg-alt px-3 py-2">
-        <span className="text-[11px] text-ink-subtle">Routed to bar station</span>
+        <span className="text-[11px] text-ink-subtle">{t("routedTo")}</span>
         <span className="text-[11px] font-semibold" style={{ color }}>
           KOT #041
         </span>
@@ -162,29 +163,30 @@ export function OrderFlowPreview({ color }: { color: string }) {
 
 /* ---------- POS: counter checkout ---------- */
 export function PosPreview({ color }: { color: string }) {
+  const t = useTranslations("productPreviews.pos");
   const items = [
-    { name: "Flat White", price: 12.0 },
-    { name: "Croissant", price: 8.5 },
-    { name: "Long Black", price: 9.0 },
+    { key: "flatWhite", price: 12.0 },
+    { key: "croissant", price: 8.5 },
+    { key: "longBlack", price: 9.0 },
   ];
 
   return (
     <div className="rounded-xl border border-border bg-surface p-4 shadow-card">
       <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-ink">Counter · Till 1</p>
+        <p className="text-sm font-semibold text-ink">{t("counterLabel")}</p>
         <span className="flex items-center gap-1 rounded-full bg-brand-tint px-2 py-0.5 text-[10px] font-semibold text-brand">
-          <Printer size={10} aria-hidden /> Drawer open
+          <Printer size={10} aria-hidden /> {t("drawerOpen")}
         </span>
       </div>
 
       <div className="mt-3 grid grid-cols-3 gap-2">
         {items.map((it) => (
           <button
-            key={it.name}
+            key={it.key}
             type="button"
             className="rounded-lg border border-border bg-bg-alt px-2 py-2.5 text-[10px] font-medium text-ink transition-colors hover:border-brand"
           >
-            {it.name}
+            {t(`items.${it.key}`)}
             <span className="mt-0.5 block text-ink-subtle">
               RM{it.price.toFixed(2)}
             </span>
@@ -194,13 +196,13 @@ export function PosPreview({ color }: { color: string }) {
 
       <div className="mt-3 space-y-1.5 border-t border-border pt-3 text-xs">
         {items.map((it) => (
-          <div key={it.name} className="flex justify-between text-ink-muted">
-            <span>{it.name}</span>
+          <div key={it.key} className="flex justify-between text-ink-muted">
+            <span>{t(`items.${it.key}`)}</span>
             <span>RM{it.price.toFixed(2)}</span>
           </div>
         ))}
         <div className="flex justify-between pt-1.5 font-bold text-ink">
-          <span>Total</span>
+          <span>{t("total")}</span>
           <span style={{ color }}>RM29.50</span>
         </div>
       </div>
@@ -211,16 +213,15 @@ export function PosPreview({ color }: { color: string }) {
           className="flex-1 rounded-lg py-2 text-xs font-semibold text-white"
           style={{ background: color }}
         >
-          Charge RM29.50
+          {t("charge", { amount: "29.50" })}
         </button>
         <button
           type="button"
           className="flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-xs font-medium text-ink-muted"
         >
-          <Receipt size={12} aria-hidden /> Print
+          <Receipt size={12} aria-hidden /> {t("print")}
         </button>
       </div>
     </div>
   );
 }
-

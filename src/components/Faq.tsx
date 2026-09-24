@@ -2,23 +2,31 @@
 
 import { Plus } from "lucide-react";
 import { useId, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
-import { faqs } from "@/lib/content";
-
-/** FAQPage schema for rich results in Google. */
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+import { faqKeys } from "@/lib/content";
 
 export function Faq() {
+  const t = useTranslations("faq");
   const [open, setOpen] = useState<number | null>(0);
   const uid = useId();
+
+  const faqs = faqKeys.map((key) => ({
+    key,
+    q: t(`items.${key}.q`),
+    a: t(`items.${key}.a`),
+  }));
+
+  /** FAQPage schema for rich results in Google, in the active locale. */
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 
   return (
     <section id="faq" className="scroll-mt-24 py-20">
@@ -28,16 +36,16 @@ export function Faq() {
       />
       <Container>
         <SectionHeader
-          eyebrow="FAQ"
-          title="Frequently asked questions"
-          subtitle="Still unsure? Message us on WhatsApp — we reply fast."
+          eyebrow={t("section.eyebrow")}
+          title={t("section.title")}
+          subtitle={t("section.subtitle")}
         />
 
         <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q}>
+              <div key={f.key}>
                 <h3>
                   <button
                     type="button"

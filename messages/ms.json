@@ -1,0 +1,536 @@
+{
+  "site": {
+    "tagline": "Platform Perniagaan Semua-Dalam-Satu untuk Malaysia",
+    "footerBlurb": "Platform perniagaan semua-dalam-satu untuk kafe, kopitiam dan kedai makanan di Malaysia."
+  },
+  "metadata": {
+    "title": "Chupjer — Platform Perniagaan Semua-Dalam-Satu untuk Malaysia",
+    "titleTemplate": "%s | Chupjer",
+    "description": "Dari pesanan dalam talian ke sistem POS, paparan dapur ke program kesetiaan — Chupjer ialah platform semua-dalam-satu untuk perniagaan Malaysia moden. Bermula dari RM150/bulan.",
+    "ogDescription": "Pesanan dalam talian, POS, paparan dapur, kesetiaan, analitik — semua bersepadu. Bermula dari RM150/bulan.",
+    "twitterTitle": "Chupjer — Platform Perniagaan Semua-Dalam-Satu",
+    "manifestName": "Platform Perniagaan Semua-Dalam-Satu untuk Malaysia",
+    "manifestDescription": "Pesanan dalam talian, POS, paparan dapur, kesetiaan dan analitik untuk kafe di Malaysia."
+  },
+  "lang": {
+    "switchTo": "Switch to English",
+    "current": "Bahasa: Melayu"
+  },
+  "nav": {
+    "products": "Produk",
+    "compare": "Perbandingan",
+    "pricing": "Harga",
+    "faq": "FAQ",
+    "bookDemo": "Tempah Demo",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "menu": "Menu",
+    "mainNav": "Utama",
+    "mobileNav": "Mudah alih",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "eyebrow": "Dibina untuk kafe, kopitiam & kedai makanan Malaysia",
+    "headline": "Sistem Pengendalian untuk Kafe & Kedai Makanan Moden.",
+    "subheadline": "Semua yang kafe anda perlukan dari kesetiaan beli-bawa-pulang hingga pesanan meja QR yang lancar dan POS kaunter. Tanpa kerumitan sistem korporat.",
+    "primaryCta": "Tempah Demo Langsung 10-Minit",
+    "secondaryCta": "Terokai 3 Pakej Kami",
+    "trustHeading": "Dipercayai oleh kafe artisan, kopitiam dan kedai makanan di seluruh Malaysia.",
+    "cyclingWords": [
+      "Gandakan jualan anda.",
+      "Kurangkan kekacauan.",
+      "Tambah pelanggan tetap.",
+      "Miliki jenama anda.",
+      "Kembang dengan yakin."
+    ],
+    "proofPoints": [
+      "Onboarding percuma disertakan",
+      "Pelancaran hari yang sama",
+      "Tiada muat turun aplikasi diperlukan"
+    ],
+    "mock": {
+      "ordersToday": "Pesanan hari ini",
+      "revenue": "Hasil",
+      "avgTicket": "Purata bil",
+      "dashboardAlt": "Papan pemuka operasi Chupjer",
+      "sarahPoints": "Sarah's points",
+      "rewardUnlocked": "Oat Latte percuma dibuka"
+    }
+  },
+  "products": {
+    "section": {
+      "eyebrow": "3 Pakej Kami",
+      "title": "Satu Platform. Tiga Cara Mengendalikan Perniagaan Anda.",
+      "subtitle": "Pilih gabungan yang anda perlukan. Setiap pakej berfungsi secara berasingan dan bersepadu dengan lancar apabila anda bersedia untuk berkembang.",
+      "tablistLabel": "Pakej Chupjer",
+      "seeInAction": "Lihat {name} dalam tindakan",
+      "compareCapabilities": "Bandingkan keupayaan"
+    },
+    "items": {
+      "singgah": {
+        "name": "Singgah",
+        "shortName": "Singgah",
+        "tagline": "Beli-Bawa-Pulang & Kesetiaan",
+        "persona": "Sesuai untuk Kiosk Takeaway, Kedai Kopi & Kafe Berkembang",
+        "hook": "Tukar pelanggan baru kepada pelanggan tetap setia.",
+        "description": "Etalase berjenama yang menarik membolehkan pelanggan anda membuat pesanan, membayar dan mengumpul ganjaran — semuanya dari telefon mereka. Tiada muat turun diperlukan.",
+        "features": {
+          "noApp": {
+            "title": "Tiada Muat Turun Aplikasi",
+            "desc": "Berfungsi terus dalam pelayar. Sedia-PWA untuk pemasangan ke skrin utama."
+          },
+          "loyalty": {
+            "title": "Enjin Kesetiaan & Mata Digital",
+            "desc": "Kumpul mata setiap RM dibelanjakan, dengan hadiah hari jadi automatik & baucar tunai."
+          },
+          "pickup": {
+            "title": "Ambilan Segera Tanpa Beratur",
+            "desc": "Pelanggan boleh pesan lebih awal dan langkau barisan sepenuhnya."
+          },
+          "menu": {
+            "title": "Menu Digital Mudah Alih",
+            "desc": "Menu beli-bawa-pulang yang kemas dengan pilihan tambahan, add-on dan ketersediaan sebenar."
+          }
+        },
+        "showcase": {
+          "perks": "Halaman ganjaran & kesetiaan Singgah",
+          "home": "Halaman utama kedai Singgah",
+          "menu": "Menu digital Singgah"
+        }
+      },
+      "operations": {
+        "name": "Operations",
+        "shortName": "Operations",
+        "tagline": "Makan Di Tempat & Dapur",
+        "persona": "Sesuai untuk Kedai Makan Ramai & Perkhidmatan Meja",
+        "hook": "Hilangkan kekacauan pesanan waktu puncak tanpa mengambil pekerja tambahan.",
+        "description": "Urus pekerja, inventori, analitik dan tetapan pelokasi dari satu papan pemuka yang berkuasa. Dibina untuk pemilik yang mahu kawalan penuh.",
+        "features": {
+          "qr": {
+            "title": "Pesanan Meja QR Tanpa Sentuh",
+            "desc": "Pelanggan imbas dan pesan dengan pilihan penuh — gula, ais, add-on."
+          },
+          "kot": {
+            "title": "Penghalaan Terus ke Dapur/Bar (KOT)",
+            "desc": "Pesanan terus masuk ke barista atau paparan dapur sebaik sahaja ditempah."
+          },
+          "progress": {
+            "title": "Kemajuan Pesanan Masa Nyata",
+            "desc": "Jejak setiap tiket dari Menunggu → Disediakan → Dihidang."
+          },
+          "checkout": {
+            "title": "Bayar Tanpa Tunai Segera",
+            "desc": "Bayaran FPX dan e-dompet dijelaskan terus di meja."
+          }
+        },
+        "showcase": {
+          "dashboard": "Papan pemuka Operations",
+          "analytics": "Analitik Operations",
+          "menu": "Pengurusan menu"
+        }
+      },
+      "pos": {
+        "name": "Sistem POS",
+        "shortName": "Sistem POS",
+        "tagline": "Kaunter & Perkakasan",
+        "persona": "Sesuai untuk Pembayar Kaunter, Pelokasi & Operasi Penuh",
+        "hook": "Pusat kawalan kukuh untuk kaunter pembayaran dan laci tunai anda.",
+        "description": "POS yang pantas dan mudah digunakan, beroperasi secara asli pada tablet dan telefon Android. Pengguna iPad dan iPhone boleh akses webapp penuh — aplikasi iOS asli akan datang. Menyokong pencetak terma, paparan dapur dan skrin menghadap pelanggan.",
+        "features": {
+          "speed": {
+            "title": "Pembayaran Kaunter Pantas",
+            "desc": "Sentuhan item yang pantas untuk waktu sibuk — tiada lengah antara pelanggan."
+          },
+          "hardware": {
+            "title": "Sokongan Perkakasan Penuh",
+            "desc": "Pencetak resit terma, laci tunai dan pengimbas kod bar."
+          },
+          "shift": {
+            "title": "Serahan Syif & Float Tunai",
+            "desc": "Jejak float, serah antara syif, padankan laporan X/Z hujung hari."
+          },
+          "analytics": {
+            "title": "Analitik Hasil, Cukai & Jualan",
+            "desc": "Pelaporan menyeluruh dengan pecahan sedia-SST."
+          }
+        },
+        "showcase": {
+          "checkout": "Skrin pembayaran POS",
+          "menu": "Skrin menu POS",
+          "cfd": "Paparan menghadap pelanggan"
+        }
+      }
+    }
+  },
+  "productPreviews": {
+    "loyalty": {
+      "greeting": "Hai Sarah!",
+      "member": "Ahli",
+      "pts": "mata",
+      "rewardUnlocked": "Ganjaran dibuka",
+      "ptsToGo": "{count} mata lagi",
+      "claim": "Tuntut Oat Latte Percuma"
+    },
+    "orderFlow": {
+      "tableLabel": "Meja 4 · Dine-in",
+      "orderItems": "2× Flat White · 1× Croissant",
+      "stages": {
+        "pending": "Menunggu",
+        "preparing": "Disediakan",
+        "served": "Dihidang"
+      },
+      "routedTo": "Dihantar ke stesen bar"
+    },
+    "pos": {
+      "counterLabel": "Kaunter · Till 1",
+      "drawerOpen": "Laci dibuka",
+      "items": {
+        "flatWhite": "Flat White",
+        "croissant": "Croissant",
+        "longBlack": "Long Black"
+      },
+      "total": "Jumlah",
+      "charge": "Caj RM{amount}",
+      "print": "Cetak"
+    }
+  },
+  "matrix": {
+    "section": {
+      "eyebrow": "Matriks Keupayaan",
+      "title": "Lihat dengan jelas apa yang anda dapat.",
+      "subtitle": "Tiada nota kaki, tiada kejutan. Ini pecahan penuh apa yang disertakan dalam setiap pakej.",
+      "caption": "Perbandingan keupayaan pakej Chupjer",
+      "capability": "Keupayaan",
+      "included": "Disertakan",
+      "addon": "Tersedia sebagai add-on",
+      "notIncluded": "Tidak disertakan",
+      "legendIncluded": "Disertakan",
+      "legendAddon": "Add-on tersedia",
+      "legendNotIncluded": "Tidak disertakan"
+    },
+    "rows": {
+      "menuLink": "Pautan Menu Digital",
+      "loyalty": "Kesetiaan & Mata Pelanggan (CRM)",
+      "qrDineIn": "Pesanan Meja QR (Dine-in)",
+      "kot": "Paparan Stesen Dapur/Bar (KOT)",
+      "cashier": "Terminal Kaunter & Jualan Kaunter",
+      "hardware": "Sambungan Perkakasan (Laci Tunai, Pencetak Terma)",
+      "cashFloat": "Float Tunai Harian & Laporan Z-Reading"
+    }
+  },
+  "quiz": {
+    "section": {
+      "eyebrow": "Sesuaikan pakej anda",
+      "title": "Belum pasti pakej yang sesuai?",
+      "subtitle": "Jawab dua soalan ringkas dan kami tunjukkan titik mula yang tepat untuk anda.",
+      "progress": "Soalan {current} daripada {total}",
+      "yourMatch": "Padanan anda",
+      "seePricing": "Lihat harga",
+      "bookDemo": "Tempah demo",
+      "startOver": "Mula semula"
+    },
+    "steps": {
+      "type": {
+        "question": "Apakah jenis perniagaan F&B yang anda usahakan?",
+        "options": {
+          "kiosk": {
+            "label": "Kiosk Kopi / Grab & Go",
+            "desc": "Saiz kecil, perolehan pantas, kebanyakannya takeaway."
+          },
+          "dinein": {
+            "label": "Kafe / Bistro Dine-In",
+            "desc": "Meja, restoran khidmat meja, kesesakan waktu makan tengah hari."
+          },
+          "restaurant": {
+            "label": "Restoran Penuh / Rangkaian",
+            "desc": "Pelbagai stesen, beberapa cawangan, operasi penuh kaunter."
+          }
+        }
+      },
+      "pain": {
+        "question": "Apakah masalah harian terbesar anda?",
+        "options": {
+          "retention": {
+            "label": "Pengekalan & kesetiaan pelanggan",
+            "desc": "Pelanggan datang sekali dan tidak kembali lagi."
+          },
+          "peak": {
+            "label": "Pengambilan pesanan perlahan waktu puncak",
+            "desc": "Barisan memanjang dan pekerja tak mampu menampung."
+          },
+          "billing": {
+            "label": "Bil kaunter bercelaru & pengurusan tunai",
+            "desc": "Penyesuaian hujung hari tidak pernah seimbang."
+          }
+        }
+      }
+    }
+  },
+  "roi": {
+    "section": {
+      "eyebrow": "Kalkulator ROI",
+      "title": "Adakah berbaloi jika pilih Chupjer?",
+      "subtitle": "Seret peluncur mengikut perniagaan anda. Kami tunjukkan pengiraannya termasuk kos."
+    },
+    "ordersLabel": "Pesanan sehari",
+    "perDay": "{value} / hari",
+    "avgTicketLabel": "Purata nilai pesanan",
+    "locationsLabel": "Bilangan lokasi",
+    "oneLocation": "1 lokasi",
+    "manyLocations": "{count} lokasi",
+    "howTitle": "Cara kami mengira",
+    "how1": "+12% volum pesanan daripada pesanan dalam talian & ulangan kunjungan",
+    "how2": "6 jam/minggu kerja admin dijimatkan, dinilai RM25/jam",
+    "how3": "Tolak langganan anda dan yuran platform 2%",
+    "disclaimer": "Anggaran ilustrasi berdasarkan pelanggan Chupjer yang tipikal.",
+    "estimatedGain": "Anggaran keuntungan bulanan",
+    "recommendedPlan": "Pelan disyorkan",
+    "subscription": "Langganan",
+    "perMonth": "RM{amount}/bulan",
+    "paysForItself": "Berbaloi modal dalam",
+    "days": "{count} hari",
+    "getEstimate": "Dapatkan anggaran diperibadikan"
+  },
+  "why": {
+    "section": {
+      "eyebrow": "Kenapa Chupjer",
+      "title": "Dibina mengikut cara F&B Malaysia sebenar beroperasi.",
+      "subtitle": "Bukan SaaS generik yang lain. Setiap fungsi dibentuk oleh pemilik kafe di lapangan."
+    },
+    "points": {
+      "malaysia": {
+        "title": "Dibina untuk Malaysia",
+        "desc": "DuitNow, FPX, Touch 'n Go, GrabPay, Boost — semua disokong secara asli. Harga MYR, sedia-BM, patuh SST."
+      },
+      "whiteLabel": {
+        "title": "White-label Sepenuhnya",
+        "desc": "Jenama anda, domain anda, warna anda. Pelanggan melihat identiti anda — bukan kami."
+      },
+      "launch": {
+        "title": "Pelancaran Hari Yang Sama",
+        "desc": "Daftar, tetapkan menu anda, kongsi QR. Kami urus onboarding — tanpa perlu pembangun."
+      },
+      "security": {
+        "title": "Keselamatan Tahap Korporat",
+        "desc": "Keselamatan aras-barisan, sambungan disulitkan, infrastruktur SOC 2 melalui Supabase."
+      },
+      "marketing": {
+        "title": "Kami Pemasarkan Untuk Anda",
+        "desc": "Kami jalankan kempen tersasar, iklan media sosial dan promosi bermusim untuk membawa pelanggan ke pintu anda. Yuran platform 2% anda membiayai semuanya."
+      },
+      "offline": {
+        "title": "Berfungsi Luar Talian",
+        "desc": "POS terus terima pesanan walaupun WiFi terputus. Auto-segerak apabila sambungan kembali."
+      }
+    }
+  },
+  "testimonials": {
+    "section": {
+      "eyebrow": "Testimoni",
+      "title": "Disayangi pemilik kafe di seluruh Malaysia."
+    },
+    "items": {
+      "shhine": {
+        "quote": "Chupjer mengubah cara kami mengendalikan kafe. Pesanan dalam talian melalui Singgah menggandakan jualan takeaway kami dalam bulan pertama."
+      },
+      "twentyone": {
+        "quote": "Sistem POS ini pantas dan mudah digunakan. Staf saya belajar menggunakannya dalam sejam. Paparan dapur sahaja sudah menyelamatkan kami daripada banyak pesanan yang terlepas."
+      },
+      "roag": {
+        "quote": "Mengurus pelbagai cawangan dulu memang huru-hara. Kini saya lihat segalanya dari satu papan pemuka — jualan, inventori, jadual pekerja. Ia memang berfungsi."
+      }
+    }
+  },
+  "pricing": {
+    "section": {
+      "eyebrow": "Harga",
+      "title": "Harga telus. Tanpa kejutan.",
+      "subtitle": "Setiap pelan menyertakan platform penuh, onboarding dan sokongan. Yuran gerbang bayaran berasingan dan dipaparkan di bawah.",
+      "monthly": "Bulanan",
+      "yearly": "Tahunan",
+      "toggleYearly": "Tukar pengebilan tahunan",
+      "twoMonthsFree": "2 bulan percuma",
+      "mostPopular": "Paling popular",
+      "perMonth": "/bulan",
+      "billedYearly": "RM{amount} dibilkan setahun"
+    },
+    "plans": {
+      "cafe": {
+        "name": "Cafe",
+        "subtitle": "Satu Lokasi",
+        "description": "Semua yang anda perlukan untuk mengendalikan satu cawangan — dari POS hingga pesanan dalam talian.",
+        "features": [
+          "Papan Pemuka Operations",
+          "Sistem POS",
+          "Aplikasi Singgah (Pesanan Dalam Talian)",
+          "Sistem Paparan Dapur",
+          "Analitik & Pelaporan",
+          "HR & Pengurusan Pekerja",
+          "Pengurusan Inventori",
+          "Kesetiaan & Ganjaran",
+          "Yuran Pertumbuhan 2% (termasuk pemasaran)",
+          "1 Lokasi"
+        ],
+        "cta": "Berbual dengan Kami"
+      },
+      "empayar": {
+        "name": "Empayar",
+        "subtitle": "Pelbagai Lokasi",
+        "description": "Kembang merentas pelbagai cawangan dengan kawalan dan analitik berpusat.",
+        "features": [
+          "Semua dalam Cafe",
+          "Hingga 3 Lokasi",
+          "Analitik Pelbagai Lokasi",
+          "Sokongan Keutamaan",
+          "Pelaporan Lanjutan"
+        ],
+        "cta": "Bincang Tentang Pertumbuhan"
+      },
+      "franchise": {
+        "name": "Franchise",
+        "subtitle": "Pakej 10-Lokasi",
+        "description": "Dibina untuk pengendali francais yang perlukan sokongan khusus dan skala besar.",
+        "features": [
+          "Semua dalam Empayar",
+          "Hingga 10 Lokasi",
+          "Analitik Aras Franchise",
+          "Pengurus Akaun Khusus",
+          "Onboarding Keutamaan",
+          "Integrasi Tempahan"
+        ],
+        "cta": "Tempah Konsultasi"
+      }
+    },
+    "gateway": {
+      "title": "Yuran gerbang bayaran (melalui Chip-In)",
+      "note": "Ini dibayar kepada penyedia bayaran, bukan Chupjer. Bayaran balik diset terus ke akaun bank anda dalam 2 hari bekerja."
+    },
+    "gatewayFees": {
+      "fpx": "FPX (Perbankan Dalam Talian)",
+      "creditCard": "Kad Kredit",
+      "debitCard": "Kad Debit",
+      "ewallet": "E-Dompet",
+      "duitnow": "DuitNow QR",
+      "bnpl": "Buy Now Pay Later",
+      "fpxFee": "RM1 setiap transaksi",
+      "percent2": "2.0%",
+      "percent1": "1.0%",
+      "percent14": "1.4%",
+      "percent16": "1.6%",
+      "percent53": "5.3%"
+    }
+  },
+  "faq": {
+    "section": {
+      "eyebrow": "FAQ",
+      "title": "Soalan yang kerap ditanya",
+      "subtitle": "Masih ragu? Message kami di WhatsApp — kami balas dengan pantas."
+    },
+    "items": {
+      "q1": {
+        "q": "Berapa lama masa setup?",
+        "a": "Kebanyakan perniagaan sudah beroperasi dalam hari yang sama. Kami uruskan onboarding — anda cuma perlu sediakan menu dan maklumat perniagaan."
+      },
+      "q2": {
+        "q": "Ada kontrak jangka panjang tak?",
+        "a": "Kami beroperasi atas model langganan tahunan. Selepas tahun pertama, anda boleh renew setiap tahun atau tukar pelan — tiada ikatan jangka panjang melebihi tahun semasa."
+      },
+      "q3": {
+        "q": "Device apa yang boleh guna?",
+        "a": "POS kami beroperasi secara asli pada tablet dan telefon Android, dengan sokongan webapp untuk iPad dan iPhone (aplikasi iOS asli akan datang). Kami sokong Sunmi, iMin, dan kebanyakan pencetak terma serta setup paparan dapur standard."
+      },
+      "q4": {
+        "q": "Kalau tak nak sambung, boleh stop ke?",
+        "a": "Memandangkan kami guna pelan tahunan, anda boleh pilih untuk tidak renew pada hujung tahun langganan — tiada penalti. Kami bantu anda eksport data dalam tempoh 30 hari."
+      },
+      "q5": {
+        "q": "Apa pilihan bayaran yang ada?",
+        "a": "Kami sokong FPX (perbankan dalam talian), kad kredit/debit, DuitNow QR, e-dompet (Touch 'n Go, GrabPay, Boost), dan Buy Now Pay Later — semuanya melalui rakan kongsi bayaran kami Chip-in Asia."
+      },
+      "q6": {
+        "q": "Kalau ada issue, macam mana?",
+        "a": "Setiap pelan disertakan sokongan WhatsApp. Pelan Empayar dan Franchise dapat sokongan keutamaan dengan masa tindak balas lebih pantas. Kami juga ada pengurus akaun khusus untuk pelanggan Franchise."
+      },
+      "q7": {
+        "q": "Platform fee 2% tu untuk apa?",
+        "a": "Yuran platform 2% anda bukan sekadar yuran — ia membiayai kempen pemasaran yang membawa pelanggan ke pintu anda. Kami jalankan iklan media sosial tersasar, promosi bermusim (Raya, Merdeka, hujung tahun), paparkan kedai anda di platform penemuan Singgah, dan sediakan laporan prestasi kempen. Platform lain caj komisen 30–35% dan tidak pemasarkan untuk anda."
+      },
+      "q8": {
+        "q": "Ada banyak outlet — boleh urus semua sekali?",
+        "a": "Sudah tentu boleh. Pelan Empayar kami menyokong sehingga 3 lokasi, dan Franchise sehingga 10. Semuanya diurus dari satu Papan Pemuka Operations dengan analitik merentas lokasi."
+      },
+      "q9": {
+        "q": "Chupjer urus SST tak?",
+        "a": "Chupjer patuh SST sepenuhnya. Anda boleh tetapkan tetapan cukai bagi setiap lokasi, dan semua resit serta laporan menyertakan pecahan SST yang betul."
+      }
+    }
+  },
+  "demo": {
+    "eyebrow": "Tempah demo",
+    "title": "Lihat Chupjer mengendalikan kafe anda — dalam 10 minit.",
+    "subtitle": "Beritahu kami sedikit tentang perniagaan anda dan kami tunjukkan dengan tepat bagaimana sistem ini berfungsi untuk anda. Tanpa komitmen, tanpa kad.",
+    "assurances": {
+      "time": {
+        "title": "10 minit",
+        "desc": "Taklimat fokus, bukan maraton jualan."
+      },
+      "menu": {
+        "title": "Menu anda, secara langsung",
+        "desc": "Kami demo dengan setup sebenar anda di mana mungkin."
+      },
+      "schedule": {
+        "title": "Anda pilih masa",
+        "desc": "Pagi, malam, hujung minggu — kami ikut jam operasi anda."
+      }
+    },
+    "preferWhatsapp": "Lebih suka WhatsApp? Berbual sekarang"
+  },
+  "form": {
+    "yourName": "Nama anda",
+    "businessName": "Nama perniagaan",
+    "whatsappNumber": "Nombor WhatsApp",
+    "emailOptional": "Emel (pilihan)",
+    "interestedIn": "Berminat dengan",
+    "notSureYet": "Belum pasti lagi",
+    "locations": "Bilangan lokasi",
+    "sending": "Menghantar…",
+    "submit": "Tempah demo percuma saya",
+    "privacyNote": "Tiada spam, tiada desakan jualan. Kami tunjukkan sistem dan jawab soalan anda.",
+    "successTitle": "Permintaan demo diterima!",
+    "successBody": "Kami hubungi anda di WhatsApp dalam satu jam bekerja untuk tetapkan masa yang sesuai.",
+    "messageUsNow": "Message kami sekarang",
+    "fallbackError": "Sesuatu tidak kena. Sila cuba lagi.",
+    "networkError": "Ralat rangkaian. Sila cuba lagi atau message kami di WhatsApp."
+  },
+  "api": {
+    "invalidJson": "Permintaan tidak sah. Sila cuba lagi.",
+    "requiredFields": "Nama, nama perniagaan dan nombor telefon diperlukan.",
+    "invalidPhone": "Sila masukkan nombor telefon yang sah.",
+    "saveFailed": "Maklumat anda tidak dapat disimpan. Sila cuba WhatsApp sebagai alternatif."
+  },
+  "whatsapp": {
+    "general": "Hi, saya berminat dengan Chupjer. Boleh tahu lebih lanjut?",
+    "withPlan": "Hi, saya berminat dengan plan Chupjer {plan} ({tier}). Boleh tahu lebih lanjut?"
+  },
+  "footer": {
+    "product": "Produk",
+    "company": "Syarikat",
+    "getInTouch": "Hubungi kami",
+    "singgah": "Singgah",
+    "operations": "Operations",
+    "posSystem": "Sistem POS",
+    "compare": "Perbandingan",
+    "pricing": "Harga",
+    "whyChupjer": "Kenapa Chupjer",
+    "testimonials": "Testimoni",
+    "faq": "FAQ",
+    "bookDemo": "Tempah demo",
+    "allRightsReserved": "Hak cipta terpelihara."
+  },
+  "notFound": {
+    "title": "Halaman ini pergi rehat minum kopi.",
+    "body": "Halaman yang anda cari tidak wujud. Mari bawa anda kembali ke perkara yang baik.",
+    "backHome": "Kembali ke halaman utama",
+    "chatWithUs": "Berbual dengan kami"
+  }
+}

@@ -11,7 +11,8 @@ import { RoiCalculator } from "@/components/RoiCalculator";
 import { Testimonials } from "@/components/Testimonials";
 import { WhyChupjer } from "@/components/WhyChupjer";
 
-export default function HomePage() {
+/** All homepage sections, in display order. */
+export function HomePageSections() {
   return (
     <>
       <Navbar />

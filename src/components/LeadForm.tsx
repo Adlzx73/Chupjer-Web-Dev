@@ -2,11 +2,16 @@
 
 import { CircleCheck, LoaderCircle, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
-import { products, whatsappUrl } from "@/lib/content";
+import { useTranslations } from "next-intl";
+import { products } from "@/lib/content";
+import { useWhatsappUrl } from "@/lib/useWhatsappUrl";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export function LeadForm() {
+  const t = useTranslations("form");
+  const tProducts = useTranslations("products.items");
+  const whatsappHref = useWhatsappUrl();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -28,7 +33,7 @@ export function LeadForm() {
 
       if (!res.ok) {
         setStatus("error");
-        setMessage(json.error ?? "Something went wrong. Please try again.");
+        setMessage(json.error ?? t("fallbackError"));
         return;
       }
 
@@ -36,7 +41,7 @@ export function LeadForm() {
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again or message us on WhatsApp.");
+      setMessage(t("networkError"));
     }
   }
 
@@ -44,19 +49,18 @@ export function LeadForm() {
     return (
       <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-card">
         <CircleCheck size={40} className="mx-auto text-brand" aria-hidden />
-        <h3 className="mt-4 text-xl font-bold">Demo request received!</h3>
+        <h3 className="mt-4 text-xl font-bold">{t("successTitle")}</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-ink-muted">
-          We&apos;ll reach out on WhatsApp within one business hour to lock in a
-          time that suits you.
+          {t("successBody")}
         </p>
         <a
-          href={whatsappUrl()}
+          href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-solid px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
         >
           <MessageCircle size={16} aria-hidden />
-          Message us now
+          {t("messageUsNow")}
         </a>
       </div>
     );
@@ -69,21 +73,21 @@ export function LeadForm() {
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
-          label="Your name"
+          label={t("yourName")}
           name="name"
           required
           autoComplete="name"
           placeholder="Ahmad"
         />
         <Field
-          label="Business name"
+          label={t("businessName")}
           name="business_name"
           required
           autoComplete="organization"
           placeholder="TwentyOne.cafe"
         />
         <Field
-          label="WhatsApp number"
+          label={t("whatsappNumber")}
           name="phone"
           type="tel"
           required
@@ -91,7 +95,7 @@ export function LeadForm() {
           placeholder="012 345 6789"
         />
         <Field
-          label="Email (optional)"
+          label={t("emailOptional")}
           name="email"
           type="email"
           autoComplete="email"
@@ -105,7 +109,7 @@ export function LeadForm() {
             htmlFor="lead-package"
             className="block text-sm font-medium text-ink"
           >
-            Interested in
+            {t("interestedIn")}
           </label>
           <select
             id="lead-package"
@@ -113,10 +117,10 @@ export function LeadForm() {
             defaultValue="operations"
             className="mt-1.5 w-full rounded-lg border border-border bg-bg px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
           >
-            <option value="">Not sure yet</option>
+            <option value="">{t("notSureYet")}</option>
             {products.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.name} — {p.tagline}
+                {tProducts(`${p.id}.name`)} — {tProducts(`${p.id}.tagline`)}
               </option>
             ))}
           </select>
@@ -127,7 +131,7 @@ export function LeadForm() {
             htmlFor="lead-locations"
             className="block text-sm font-medium text-ink"
           >
-            Number of locations
+            {t("locations")}
           </label>
           <input
             id="lead-locations"
@@ -160,12 +164,11 @@ export function LeadForm() {
         ) : (
           <Send size={16} aria-hidden />
         )}
-        {status === "loading" ? "Sending…" : "Book my free demo"}
+        {status === "loading" ? t("sending") : t("submit")}
       </button>
 
       <p className="mt-3 text-center text-xs text-ink-subtle">
-        No spam, no hard sell. We&apos;ll show you the system and answer your
-        questions.
+        {t("privacyNote")}
       </p>
     </form>
   );
@@ -207,4 +210,3 @@ function Field({
     </div>
   );
 }
-

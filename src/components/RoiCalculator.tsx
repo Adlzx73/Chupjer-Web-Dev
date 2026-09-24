@@ -1,13 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
-import { plans } from "@/lib/content";
+import { plans, type PlanId } from "@/lib/content";
 
-const fmt = (n: number) =>
-  new Intl.NumberFormat("en-MY", { maximumFractionDigits: 0 }).format(n);
+const intlLocale = (locale: string) => (locale === "ms" ? "ms-MY" : "en-MY");
 
 function Slider({
+  id,
   label,
   value,
   min,
@@ -17,6 +18,7 @@ function Slider({
   display,
   hint,
 }: {
+  id: string;
   label: string;
   value: number;
   min: number;
@@ -29,13 +31,13 @@ function Slider({
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <label htmlFor={`roi-${label}`} className="text-sm font-medium text-ink">
+        <label htmlFor={id} className="text-sm font-medium text-ink">
           {label}
         </label>
         <span className="text-sm font-bold text-brand">{display}</span>
       </div>
       <input
-        id={`roi-${label}`}
+        id={id}
         type="range"
         min={min}
         max={max}
@@ -50,12 +52,17 @@ function Slider({
 }
 
 export function RoiCalculator() {
+  const t = useTranslations("roi");
+  const locale = useLocale();
   const [orders, setOrders] = useState(40);
   const [avgTicket, setAvgTicket] = useState(18);
   const [locations, setLocations] = useState(1);
 
+  const fmt = (n: number) =>
+    new Intl.NumberFormat(intlLocale(locale), { maximumFractionDigits: 0 }).format(n);
+
   // Which plan fits, and the derived maths.
-  const { plan, sub, net, paybackDays } = useMemo(() => {
+  const { planId, sub, net, paybackDays } = useMemo(() => {
     const plan =
       locations <= 1 ? plans[0] : locations <= 3 ? plans[1] : plans[2];
     const sub = plan.monthly;
@@ -70,32 +77,34 @@ export function RoiCalculator() {
     const net = extraRevenue + labourSaved - sub - growthFee;
     const paybackDays = net > 0 ? Math.ceil(sub / (net / 30)) : 0;
 
-    return { plan, sub, net, paybackDays };
+    return { planId: plan.id as PlanId, sub, net, paybackDays };
   }, [orders, avgTicket, locations]);
 
   return (
     <section className="py-20">
       <Container>
         <SectionHeader
-          eyebrow="ROI Calculator"
-          title="What does Chupjer actually pay back?"
-          subtitle="Drag the sliders to match your business. We show the maths — including the costs."
+          eyebrow={t("section.eyebrow")}
+          title={t("section.title")}
+          subtitle={t("section.subtitle")}
         />
 
         <div className="mt-10 grid gap-6 rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-[1fr_1fr]">
           {/* Inputs */}
           <div className="space-y-6">
             <Slider
-              label="Orders per day"
+              id="roi-orders"
+              label={t("ordersLabel")}
               value={orders}
               min={5}
               max={300}
               step={5}
               onChange={setOrders}
-              display={`${orders} / day`}
+              display={t("perDay", { value: fmt(orders) })}
             />
             <Slider
-              label="Average order value"
+              id="roi-avg-ticket"
+              label={t("avgTicketLabel")}
               value={avgTicket}
               min={5}
               max={80}
@@ -104,34 +113,37 @@ export function RoiCalculator() {
               display={`RM${avgTicket}`}
             />
             <Slider
-              label="Locations"
+              id="roi-locations"
+              label={t("locationsLabel")}
               value={locations}
               min={1}
               max={10}
               step={1}
               onChange={setLocations}
-              display={locations === 1 ? "1 location" : `${locations} locations`}
+              display={
+                locations === 1
+                  ? t("oneLocation")
+                  : t("manyLocations", { count: fmt(locations) })
+              }
             />
 
             <div className="rounded-xl border border-border bg-bg-alt p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-subtle">
-                How we calculate this
+                {t("howTitle")}
               </p>
               <ul className="mt-2 space-y-1 text-xs text-ink-muted">
-                <li>• +12% order volume from online ordering &amp; repeat visits</li>
-                <li>• 6 hrs/week of admin saved, valued at RM25/hr</li>
-                <li>• Less your subscription and the 2% platform fee</li>
+                <li>• {t("how1")}</li>
+                <li>• {t("how2")}</li>
+                <li>• {t("how3")}</li>
               </ul>
-              <p className="mt-2 text-[11px] text-ink-subtle">
-                Illustrative estimate based on typical Chupjer customers.
-              </p>
+              <p className="mt-2 text-[11px] text-ink-subtle">{t("disclaimer")}</p>
             </div>
           </div>
 
           {/* Result */}
           <div className="flex flex-col justify-center rounded-xl border border-border bg-bg-alt p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
-              Estimated monthly gain
+              {t("estimatedGain")}
             </p>
             <p className="mt-2 text-4xl font-bold text-ink sm:text-5xl">
               RM{fmt(net)}
@@ -139,17 +151,21 @@ export function RoiCalculator() {
 
             <dl className="mt-6 space-y-2.5 text-sm">
               <div className="flex justify-between">
-                <dt className="text-ink-muted">Recommended plan</dt>
-                <dd className="font-semibold text-ink">{plan.name}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-ink-muted">Subscription</dt>
-                <dd className="font-semibold text-ink">RM{fmt(sub)}/mo</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-ink-muted">Pays for itself in</dt>
+                <dt className="text-ink-muted">{t("recommendedPlan")}</dt>
                 <dd className="font-semibold text-ink">
-                  {paybackDays > 0 ? `${paybackDays} days` : "—"}
+                  {planId === "cafe" ? "Cafe" : planId === "empayar" ? "Empayar" : "Franchise"}
+                </dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-ink-muted">{t("subscription")}</dt>
+                <dd className="font-semibold text-ink">
+                  {t("perMonth", { amount: fmt(sub) })}
+                </dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-ink-muted">{t("paysForItself")}</dt>
+                <dd className="font-semibold text-ink">
+                  {paybackDays > 0 ? t("days", { count: paybackDays }) : "—"}
                 </dd>
               </div>
             </dl>
@@ -158,7 +174,7 @@ export function RoiCalculator() {
               href="#demo"
               className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-solid px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
             >
-              Get a personalised estimate
+              {t("getEstimate")}
             </a>
           </div>
         </div>

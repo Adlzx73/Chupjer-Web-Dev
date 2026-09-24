@@ -2,20 +2,17 @@
 
 import { Menu, MessageCircle, X } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ButtonLink } from "@/components/ui/Button";
-import { site, whatsappUrl } from "@/lib/content";
-
-const links = [
-  { label: "Products", href: "#products" },
-  { label: "Compare", href: "#compare" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-];
+import { site } from "@/lib/content";
+import { useWhatsappUrl } from "@/lib/useWhatsappUrl";
 
 export function Navbar() {
+  const t = useTranslations("nav");
+  const whatsappHref = useWhatsappUrl();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -34,6 +31,13 @@ export function Navbar() {
     };
   }, [open]);
 
+  const links = [
+    { label: t("products"), href: "#products" },
+    { label: t("compare"), href: "#compare" },
+    { label: t("pricing"), href: "#pricing" },
+    { label: t("faq"), href: "#faq" },
+  ];
+
   return (
     <>
       <header
@@ -44,7 +48,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2" aria-label={site.name}>
+          <a href="#top" className="flex items-center gap-2" aria-label={site.name}>
             <Image
               src="/logo/chupjer-official-logo_1.png"
               alt=""
@@ -55,9 +59,9 @@ export function Navbar() {
             <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-tight text-ink">
               {site.name}
             </span>
-          </Link>
+          </a>
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+          <nav className="hidden items-center gap-1 md:flex" aria-label={t("mainNav")}>
             {links.map((l) => (
               <a
                 key={l.href}
@@ -70,14 +74,15 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <ButtonLink href="#demo" size="md" className="hidden md:inline-flex">
-              Book Demo
+              {t("bookDemo")}
             </ButtonLink>
             <button
               type="button"
               onClick={() => setOpen(true)}
-              aria-label="Open menu"
+              aria-label={t("openMenu")}
               aria-expanded={open}
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted md:hidden"
             >
@@ -98,18 +103,18 @@ export function Navbar() {
           <div className="absolute inset-y-0 right-0 w-[80%] max-w-xs border-l border-border bg-surface p-5 shadow-elevated">
             <div className="flex items-center justify-between">
               <span className="font-[family-name:var(--font-display)] text-lg font-bold text-ink">
-                Menu
+                {t("menu")}
               </span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="Close menu"
+                aria-label={t("closeMenu")}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted"
               >
                 <X size={18} aria-hidden />
               </button>
             </div>
-            <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile">
+            <nav className="mt-6 flex flex-col gap-1" aria-label={t("mobileNav")}>
               {links.map((l) => (
                 <a
                   key={l.href}
@@ -121,6 +126,10 @@ export function Navbar() {
                 </a>
               ))}
             </nav>
+            <div className="mt-6 flex items-center gap-2">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
             <div className="mt-6">
               <ButtonLink
                 href="#demo"
@@ -128,7 +137,7 @@ export function Navbar() {
                 className="w-full"
                 onClick={() => setOpen(false)}
               >
-                Book Demo
+                {t("bookDemo")}
               </ButtonLink>
             </div>
           </div>
@@ -139,16 +148,16 @@ export function Navbar() {
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 px-4 py-3 backdrop-blur-md md:hidden">
         <div className="flex items-center gap-2">
           <a
-            href={whatsappUrl()}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-medium text-ink"
           >
             <MessageCircle size={16} aria-hidden />
-            WhatsApp
+            {t("whatsapp")}
           </a>
           <ButtonLink href="#demo" size="md" className="flex-1">
-            Book Demo
+            {t("bookDemo")}
           </ButtonLink>
         </div>
       </div>

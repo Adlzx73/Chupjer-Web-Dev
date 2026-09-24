@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useId, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   LoyaltyPreview,
   OrderFlowPreview,
@@ -15,6 +16,7 @@ import { products, type Product, type ProductId } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function ProductDeck() {
+  const t = useTranslations("products");
   const reduce = useReducedMotionSafe();
   const [active, setActive] = useState<ProductId>("operations");
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -42,15 +44,15 @@ export function ProductDeck() {
     <section id="products" className="scroll-mt-24 border-t border-border bg-bg-alt py-20">
       <Container>
         <SectionHeader
-          eyebrow="The 3 Packages"
-          title="One Platform. Three Ways to Run Your Business."
-          subtitle="Mix and match what you need. Every package works standalone and connects seamlessly when you're ready to scale."
+          eyebrow={t("section.eyebrow")}
+          title={t("section.title")}
+          subtitle={t("section.subtitle")}
         />
 
         {/* ---------- Tablist ---------- */}
         <div
           role="tablist"
-          aria-label="Chupjer packages"
+          aria-label={t("section.tablistLabel")}
           aria-orientation="horizontal"
           className="mx-auto mt-10 flex max-w-2xl gap-2 overflow-x-auto rounded-2xl border border-border bg-surface p-2 no-scrollbar"
         >
@@ -93,11 +95,11 @@ export function ProductDeck() {
                     style={{ background: p.color }}
                     aria-hidden
                   />
-                  <span className="hidden sm:inline">{p.name}</span>
-                  <span className="sm:hidden">{p.shortName}</span>
+                  <span className="hidden sm:inline">{t(`items.${p.id}.name`)}</span>
+                  <span className="sm:hidden">{t(`items.${p.id}.shortName`)}</span>
                 </span>
                 <span className="relative text-[11px] opacity-75">
-                  {p.tagline}
+                  {t(`items.${p.id}.tagline`)}
                 </span>
               </button>
             );
@@ -124,24 +126,24 @@ export function ProductDeck() {
                 className="inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold"
                 style={{ background: `${current.color}1a`, color: current.color }}
               >
-                {current.persona}
+                {t(`items.${current.id}.persona`)}
               </p>
               <h3 className="mt-4 text-2xl font-bold sm:text-3xl">
-                {current.name}
+                {t(`items.${current.id}.name`)}
               </h3>
               <p
                 className="mt-1.5 text-base font-medium"
                 style={{ color: current.color }}
               >
-                {current.hook}
+                {t(`items.${current.id}.hook`)}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                {current.description}
+                {t(`items.${current.id}.description`)}
               </p>
 
               <ul className="mt-6 space-y-3">
                 {current.features.map((f) => (
-                  <li key={f.title} className="flex gap-3">
+                  <li key={f} className="flex gap-3">
                     <span
                       className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
                       style={{
@@ -152,8 +154,12 @@ export function ProductDeck() {
                       <Check size={12} aria-hidden />
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-ink">{f.title}</p>
-                      <p className="text-sm text-ink-muted">{f.desc}</p>
+                      <p className="text-sm font-semibold text-ink">
+                        {t(`items.${current.id}.features.${f}.title`)}
+                      </p>
+                      <p className="text-sm text-ink-muted">
+                        {t(`items.${current.id}.features.${f}.desc`)}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -161,10 +167,10 @@ export function ProductDeck() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <ButtonLink href="#demo" size="md">
-                  See {current.name} in action
+                  {t("section.seeInAction", { name: t(`items.${current.id}.name`) })}
                 </ButtonLink>
                 <ButtonLink href="#compare" variant="secondary" size="md">
-                  Compare capabilities
+                  {t("section.compareCapabilities")}
                 </ButtonLink>
               </div>
             </div>
@@ -190,7 +196,7 @@ export function ProductDeck() {
                   >
                     <Image
                       src={s.src}
-                      alt={s.alt}
+                      alt={t(`items.${current.id}.showcase.${s.key}`)}
                       width={300}
                       height={200}
                       className="h-auto w-full transition-transform duration-300 group-hover:scale-105"

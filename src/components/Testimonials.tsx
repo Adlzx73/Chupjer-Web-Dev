@@ -3,8 +3,11 @@ import { Quote } from "lucide-react";
 import { Container, SectionHeader } from "@/components/ui/Container";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { testimonials } from "@/lib/content";
+import { getTranslations } from "next-intl/server";
 
-export function Testimonials() {
+export async function Testimonials() {
+  const t = await getTranslations("testimonials");
+
   return (
     <section
       id="testimonials"
@@ -12,30 +15,30 @@ export function Testimonials() {
     >
       <Container>
         <SectionHeader
-          eyebrow="Testimonials"
-          title="Loved by cafe owners across Malaysia."
+          eyebrow={t("section.eyebrow")}
+          title={t("section.title")}
         />
 
         <RevealGroup
           className="mt-12 grid gap-6 md:grid-cols-3"
           stagger={0.1}
         >
-          {testimonials.map((t) => (
-            <RevealItem key={t.orgName}>
+          {testimonials.map((item) => (
+            <RevealItem key={item.key}>
               <figure className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6 shadow-card">
                 <Quote
                   size={22}
                   className="shrink-0"
-                  style={{ color: t.color }}
+                  style={{ color: item.color }}
                   aria-hidden
                 />
                 <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
-                  {t.quote}
+                  {t(`items.${item.key}.quote`)}
                 </blockquote>
                 <figcaption className="mt-5 flex items-center gap-2.5 border-t border-border pt-4">
-                  {t.logo ? (
+                  {item.logo ? (
                     <Image
-                      src={t.logo}
+                      src={item.logo}
                       alt=""
                       width={32}
                       height={32}
@@ -44,14 +47,14 @@ export function Testimonials() {
                   ) : (
                     <span
                       className="flex h-8 w-8 items-center justify-center rounded-md text-xs font-bold text-white"
-                      style={{ background: t.color }}
+                      style={{ background: item.color }}
                       aria-hidden
                     >
-                      {t.orgName.slice(0, 2).toUpperCase()}
+                      {item.orgName.slice(0, 2).toUpperCase()}
                     </span>
                   )}
                   <span className="text-sm font-semibold text-ink">
-                    {t.orgName}
+                    {item.orgName}
                   </span>
                 </figcaption>
               </figure>

@@ -4,24 +4,30 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowDown, Check, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { fallbackBrands, hero } from "@/lib/content";
+import { fallbackBrands } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function Hero() {
+  const t = useTranslations("hero");
   const reduce = useReducedMotionSafe();
   const [index, setIndex] = useState(0);
+
+  const cyclingWords = t.raw("cyclingWords") as string[];
 
   // Cycle the headline word. Skipped under reduced-motion.
   useEffect(() => {
     if (reduce) return;
     const id = setInterval(
-      () => setIndex((i) => (i + 1) % hero.cyclingWords.length),
+      () => setIndex((i) => (i + 1) % cyclingWords.length),
       2800,
     );
     return () => clearInterval(id);
-  }, [reduce]);
+  }, [reduce, cyclingWords.length]);
+
+  const proofPoints = t.raw("proofPoints") as string[];
 
   return (
     <section className="relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pt-36">
@@ -37,18 +43,18 @@ export function Hero() {
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-brand-tint px-3 py-1.5 text-xs font-semibold text-brand">
               <Sparkles size={13} aria-hidden />
-              {hero.eyebrow}
+              {t("eyebrow")}
             </p>
 
             <h1 className="mt-5 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-              {hero.headline}
+              {t("headline")}
             </h1>
 
             {/* Animated proof line */}
             <div className="mt-3 flex h-9 items-center">
               {reduce ? (
                 <span className="text-xl font-semibold text-brand sm:text-2xl">
-                  {hero.cyclingWords[0]}
+                  {cyclingWords[0]}
                 </span>
               ) : (
                 <AnimatePresence mode="wait">
@@ -60,35 +66,31 @@ export function Hero() {
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     className="text-xl font-semibold text-brand sm:text-2xl"
                   >
-                    {hero.cyclingWords[index]}
+                    {cyclingWords[index]}
                   </motion.span>
                 </AnimatePresence>
               )}
             </div>
 
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
-              {hero.subheadline}
+              {t("subheadline")}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ButtonLink href="#demo" size="lg">
-                {hero.primaryCta}
+                {t("primaryCta")}
               </ButtonLink>
               <ButtonLink href="#products" variant="secondary" size="lg">
-                {hero.secondaryCta}
+                {t("secondaryCta")}
                 <ArrowDown size={16} aria-hidden />
               </ButtonLink>
             </div>
 
             <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-subtle">
-              {[
-                "Free onboarding included",
-                "Same-day launch",
-                "No app download needed",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-1.5">
+              {proofPoints.map((pt) => (
+                <li key={pt} className="flex items-center gap-1.5">
                   <Check size={14} className="text-brand" aria-hidden />
-                  {t}
+                  {pt}
                 </li>
               ))}
             </ul>
@@ -111,9 +113,9 @@ export function Hero() {
                 <div className="p-3">
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { label: "Orders today", value: "128", delta: "+18%" },
-                      { label: "Revenue", value: "RM1,940", delta: "+12%" },
-                      { label: "Avg ticket", value: "RM15.20", delta: "+4%" },
+                      { label: t("mock.ordersToday"), value: "128", delta: "+18%" },
+                      { label: t("mock.revenue"), value: "RM1,940", delta: "+12%" },
+                      { label: t("mock.avgTicket"), value: "RM15.20", delta: "+4%" },
                     ].map((s) => (
                       <div
                         key={s.label}
@@ -131,7 +133,7 @@ export function Hero() {
                   <div className="mt-2 overflow-hidden rounded-lg border border-border">
                     <Image
                       src="/assets/dashboard-BBapFpFo.png"
-                      alt="Chupjer operations dashboard"
+                      alt={t("mock.dashboardAlt")}
                       width={640}
                       height={400}
                       priority
@@ -144,13 +146,13 @@ export function Hero() {
               {/* Floating loyalty phone */}
               <div className="absolute -bottom-10 -left-4 w-32 rotate-[-4deg] rounded-2xl border border-border bg-surface p-2 shadow-elevated sm:w-36 sm:-left-10">
                 <div className="rounded-xl bg-bg-alt p-2.5 text-center">
-                  <p className="text-[9px] text-ink-subtle">Sarah&apos;s points</p>
+                  <p className="text-[9px] text-ink-subtle">{t("mock.sarahPoints")}</p>
                   <p className="text-lg font-bold text-brand">150</p>
                   <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-border">
                     <div className="h-full w-[75%] rounded-full bg-brand" />
                   </div>
                   <p className="mt-1.5 rounded-md bg-brand-tint px-1.5 py-1 text-[8px] font-semibold text-brand">
-                    Free Oat Latte unlocked
+                    {t("mock.rewardUnlocked")}
                   </p>
                 </div>
               </div>
@@ -161,7 +163,7 @@ export function Hero() {
         {/* ---------- Trust ticker ---------- */}
         <div className="mt-20">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-ink-subtle">
-            {hero.trustHeading}
+            {t("trustHeading")}
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
             {fallbackBrands.map((b) => (
