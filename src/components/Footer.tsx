@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { site, whatsappUrl } from "@/lib/content";
 import { getTranslations } from "next-intl/server";
 
@@ -38,6 +39,7 @@ export async function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <Container>
+        <Reveal y={12}>
         <div className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
@@ -131,6 +133,7 @@ export async function Footer() {
             </a>
           </div>
         </div>
+        </Reveal>
       </Container>
     </footer>
   );

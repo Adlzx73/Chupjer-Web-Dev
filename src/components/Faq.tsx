@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { faqKeys } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
@@ -38,17 +39,22 @@ export function Faq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Container>
-        <SectionHeader
-          eyebrow={t("section.eyebrow")}
-          title={t("section.title")}
-          subtitle={t("section.subtitle")}
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow={t("section.eyebrow")}
+            title={t("section.title")}
+            subtitle={t("section.subtitle")}
+          />
+        </Reveal>
 
-        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-[1.25rem] border border-border bg-surface">
+        <RevealGroup
+          stagger={0.06}
+          className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-[1.25rem] border border-border bg-surface"
+        >
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.key}>
+              <RevealItem key={f.key}>
                 <h3>
                   <button
                     type="button"
@@ -86,10 +92,10 @@ export function Faq() {
                 >
                   <p className="text-sm leading-relaxed text-ink-muted">{f.a}</p>
                 </div>
-              </div>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </Container>
     </section>
   );

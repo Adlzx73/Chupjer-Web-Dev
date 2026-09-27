@@ -12,6 +12,7 @@ import {
 } from "@/components/ProductPreviews";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container, SectionHeader } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { products, type Product, type ProductId } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
@@ -44,11 +45,13 @@ export function ProductDeck() {
   return (
     <section id="products" className="scroll-mt-24 border-t border-border bg-bg-alt py-20">
       <Container>
-        <SectionHeader
-          eyebrow={t("section.eyebrow")}
-          title={t("section.title")}
-          subtitle={t("section.subtitle")}
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow={t("section.eyebrow")}
+            title={t("section.title")}
+            subtitle={t("section.subtitle")}
+          />
+        </Reveal>
 
         {/* ---------- Tablist ---------- */}
         <div

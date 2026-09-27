@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { plans, type PlanId } from "@/lib/content";
 
 const intlLocale = (locale: string) => (locale === "ms" ? "ms-MY" : "en-MY");
@@ -83,13 +84,16 @@ export function RoiCalculator() {
   return (
     <section className="py-20">
       <Container>
-        <SectionHeader
-          eyebrow={t("section.eyebrow")}
-          title={t("section.title")}
-          subtitle={t("section.subtitle")}
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow={t("section.eyebrow")}
+            title={t("section.title")}
+            subtitle={t("section.subtitle")}
+          />
+        </Reveal>
 
-        <div className="mt-10 grid gap-6 rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-[1fr_1fr]">
+        <Reveal delay={0.1}>
+          <div className="mt-10 grid gap-6 rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-[1fr_1fr]">
           {/* Inputs */}
           <div className="space-y-6">
             <Slider
@@ -177,7 +181,8 @@ export function RoiCalculator() {
               {t("getEstimate")}
             </a>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

@@ -1,6 +1,7 @@
 import { CalendarCheck, Clock, MessageCircle, Users } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { LeadForm } from "@/components/LeadForm";
+import { Reveal } from "@/components/ui/Reveal";
 import { getTranslations } from "next-intl/server";
 import { whatsappUrl } from "@/lib/content";
 
@@ -21,7 +22,7 @@ export async function DemoCTA() {
     >
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div className="lg:sticky lg:top-24">
+          <Reveal className="lg:sticky lg:top-24">
             <p className="eyebrow">
               {t("eyebrow")}
             </p>
@@ -55,7 +56,7 @@ export async function DemoCTA() {
               <MessageCircle size={16} aria-hidden />
               {t("preferWhatsapp")}
             </a>
-          </div>
+          </Reveal>
 
           <LeadForm />
         </div>

@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container, SectionHeader } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { products, quizSteps, type ProductId } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
@@ -54,13 +55,16 @@ export function FindYourMatch() {
   return (
     <section className="border-y border-border bg-bg-alt py-20">
       <Container>
-        <SectionHeader
-          eyebrow={t("section.eyebrow")}
-          title={t("section.title")}
-          subtitle={t("section.subtitle")}
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow={t("section.eyebrow")}
+            title={t("section.title")}
+            subtitle={t("section.subtitle")}
+          />
+        </Reveal>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8">
+        <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
+          <div className="rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8">
           {!matched ? (
             <>
               {/* Progress */}
@@ -191,7 +195,8 @@ export function FindYourMatch() {
               </div>
             </motion.div>
           )}
-        </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

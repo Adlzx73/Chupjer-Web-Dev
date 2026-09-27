@@ -2,24 +2,58 @@
 
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/content";
+import { useScrollSpy } from "@/lib/useScrollSpy";
+
+const SPY_IDS = ["products", "compare", "pricing", "faq"];
 
 export function Navbar() {
   const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const lastY = useRef(0);
+
+  const activeId = useScrollSpy(SPY_IDS);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    lastY.current = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          const delta = y - lastY.current;
+          if (y < 120) {
+            setHidden(false);
+          } else if (Math.abs(delta) > 4) {
+            setHidden(delta > 0);
+          }
+          lastY.current = y;
+          ticking = false;
+        });
+      }
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Never hide while the mobile drawer is open.
+  useEffect(() => {
+    if (open) setHidden(false);
+  }, [open]);
 
   // Prevent background scroll while the mobile drawer is open.
   useEffect(() => {
@@ -30,16 +64,28 @@ export function Navbar() {
   }, [open]);
 
   const links = [
-    { label: t("products"), href: "#products" },
-    { label: t("compare"), href: "#compare" },
-    { label: t("pricing"), href: "#pricing" },
-    { label: t("faq"), href: "#faq" },
+    { label: t("products"), href: "#products", id: "products" },
+    { label: t("compare"), href: "#compare", id: "compare" },
+    { label: t("pricing"), href: "#pricing", id: "pricing" },
+    { label: t("faq"), href: "#faq", id: "faq" },
   ];
+
+  const linkClass = (id: string) => {
+    const base =
+      "relative rounded-full px-3 py-2 text-sm font-medium transition-colors";
+    const active =
+      "text-ink after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-brand after:content-['']";
+    const idle = "text-ink-muted hover:bg-brand-tint hover:text-ink";
+    return `${base} ${activeId === id ? active : idle}`;
+  };
 
   return (
     <>
+      <ScrollProgress />
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-[transform,colors] duration-300 ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${
           scrolled
             ? "border-b border-border bg-surface/85 backdrop-blur-md"
             : "border-b border-transparent bg-transparent"
@@ -75,7 +121,8 @@ export function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-brand-tint hover:text-ink"
+                aria-current={activeId === l.id ? "true" : undefined}
+                className={linkClass(l.id)}
               >
                 {l.label}
               </a>
@@ -122,7 +169,10 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-brand-tint hover:text-ink"
+                  aria-current={activeId === l.id ? "true" : undefined}
+                  className={`rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-brand-tint hover:text-ink ${
+                    activeId === l.id ? "text-ink" : "text-ink-muted"
+                  }`}
                 >
                   {l.label}
                 </a>
