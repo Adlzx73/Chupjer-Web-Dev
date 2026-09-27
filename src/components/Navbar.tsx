@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
@@ -8,11 +8,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/content";
-import { useWhatsappUrl } from "@/lib/useWhatsappUrl";
 
 export function Navbar() {
   const t = useTranslations("nav");
-  const whatsappHref = useWhatsappUrl();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -48,18 +46,29 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-2" aria-label={site.name}>
-            <Image
-              src="/logo/chupjer-official-logo_1.png"
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-md object-contain"
-            />
-            <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-tight text-ink">
-              {site.name}
-            </span>
-          </a>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label={t("openMenu")}
+              aria-expanded={open}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted md:hidden"
+            >
+              <Menu size={18} aria-hidden />
+            </button>
+            <a href="#top" className="flex items-center gap-2" aria-label={site.name}>
+              <Image
+                src="/logo/chupjer-official-logo_1.png"
+                alt=""
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-md object-contain"
+              />
+              <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-tight text-ink">
+                {site.name}
+              </span>
+            </a>
+          </div>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label={t("mainNav")}>
             {links.map((l) => (
@@ -74,20 +83,13 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <LanguageSwitcher />
+            <div className="hidden md:block">
+              <LanguageSwitcher />
+            </div>
             <ThemeToggle />
-            <ButtonLink href="#demo" size="md" className="hidden md:inline-flex">
+            <ButtonLink href="#demo" size="md">
               {t("bookDemo")}
             </ButtonLink>
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-label={t("openMenu")}
-              aria-expanded={open}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink-muted md:hidden"
-            >
-              <Menu size={18} aria-hidden />
-            </button>
           </div>
         </div>
       </header>
@@ -100,7 +102,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             aria-hidden
           />
-          <div className="absolute inset-y-0 right-0 w-[80%] max-w-xs border-l border-border bg-surface p-5 shadow-elevated">
+          <div className="absolute inset-y-0 left-0 w-[80%] max-w-xs border-r border-border bg-surface p-5 shadow-elevated">
             <div className="flex items-center justify-between">
               <span className="font-[family-name:var(--font-display)] text-lg font-bold text-ink">
                 {t("menu")}
@@ -143,24 +145,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-
-      {/* Mobile sticky bottom bar — biggest mobile conversion win */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 px-4 py-3 backdrop-blur-md md:hidden">
-        <div className="flex items-center gap-2">
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-medium text-ink"
-          >
-            <MessageCircle size={16} aria-hidden />
-            {t("whatsapp")}
-          </a>
-          <ButtonLink href="#demo" size="md" className="flex-1">
-            {t("bookDemo")}
-          </ButtonLink>
-        </div>
-      </div>
     </>
   );
 }

@@ -1,13 +1,16 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { motion } from "motion/react";
 import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Container, SectionHeader } from "@/components/ui/Container";
 import { faqKeys } from "@/lib/content";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 export function Faq() {
   const t = useTranslations("faq");
+  const reduce = useReducedMotionSafe();
   const [open, setOpen] = useState<number | null>(0);
   const uid = useId();
 
@@ -29,7 +32,7 @@ export function Faq() {
   };
 
   return (
-    <section id="faq" className="scroll-mt-24 py-20">
+    <section id="faq" className="content-auto scroll-mt-24 py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -41,7 +44,7 @@ export function Faq() {
           subtitle={t("section.subtitle")}
         />
 
-        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-[1.25rem] border border-border bg-surface">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -58,13 +61,20 @@ export function Faq() {
                     <span className="text-sm font-semibold text-ink sm:text-base">
                       {f.q}
                     </span>
-                    <Plus
-                      size={18}
-                      className={`shrink-0 text-ink-subtle transition-transform duration-300 ${
-                        isOpen ? "rotate-45" : ""
-                      }`}
+                    <motion.span
                       aria-hidden
-                    />
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={
+                        reduce
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 420, damping: 28 }
+                      }
+                    >
+                      <Plus
+                        size={18}
+                        className="shrink-0 text-ink-subtle"
+                      />
+                    </motion.span>
                   </button>
                 </h3>
                 <div

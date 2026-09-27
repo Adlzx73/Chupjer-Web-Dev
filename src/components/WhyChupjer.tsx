@@ -21,7 +21,7 @@ export async function WhyChupjer() {
         >
           {whyPoints.map((w) => (
             <RevealItem key={w.key}>
-              <div className="group h-full rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-border-strong hover:bg-surface-hover">
+              <div className="group h-full rounded-[1.25rem] border border-border bg-surface p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-border-strong hover:bg-surface-hover hover:shadow-elevated">
                 <span
                   className="inline-flex h-10 w-10 items-center justify-center rounded-xl"
                   style={{ background: `${w.color}1a`, color: w.color }}

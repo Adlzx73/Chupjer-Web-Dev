@@ -47,7 +47,7 @@ export function LeadForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-card">
+      <div className="rounded-[1.25rem] border border-border bg-surface p-8 text-center shadow-elevated">
         <CircleCheck size={40} className="mx-auto text-brand" aria-hidden />
         <h3 className="mt-4 text-xl font-bold">{t("successTitle")}</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm text-ink-muted">
@@ -69,7 +69,7 @@ export function LeadForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8"
+      className="rounded-[1.25rem] border border-border bg-surface p-6 shadow-elevated sm:p-8"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
@@ -115,7 +115,7 @@ export function LeadForm() {
             id="lead-package"
             name="package_interest"
             defaultValue="operations"
-            className="mt-1.5 w-full rounded-lg border border-border bg-bg px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
+            className="mt-1.5 w-full rounded-xl border border-border bg-bg px-3 py-2.5 text-sm text-ink transition-colors focus:border-brand focus:outline-none"
           >
             <option value="">{t("notSureYet")}</option>
             {products.map((p) => (
@@ -140,7 +140,7 @@ export function LeadForm() {
             min={1}
             max={50}
             defaultValue={1}
-            className="mt-1.5 w-full rounded-lg border border-border bg-bg px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
+            className="mt-1.5 w-full rounded-xl border border-border bg-bg px-3 py-2.5 text-sm text-ink transition-colors focus:border-brand focus:outline-none"
           />
         </div>
       </div>
@@ -205,7 +205,7 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className="mt-1.5 w-full rounded-lg border border-border bg-bg px-3 py-2.5 text-sm text-ink placeholder:text-ink-subtle focus:border-brand focus:outline-none"
+        className="mt-1.5 w-full rounded-xl border border-border bg-bg px-3 py-2.5 text-sm text-ink placeholder:text-ink-subtle transition-colors focus:border-brand focus:outline-none"
       />
     </div>
   );

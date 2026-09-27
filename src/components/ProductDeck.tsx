@@ -12,6 +12,7 @@ import {
 } from "@/components/ProductPreviews";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container, SectionHeader } from "@/components/ui/Container";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { products, type Product, type ProductId } from "@/lib/content";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
@@ -54,7 +55,7 @@ export function ProductDeck() {
           role="tablist"
           aria-label={t("section.tablistLabel")}
           aria-orientation="horizontal"
-          className="mx-auto mt-10 flex max-w-2xl gap-2 overflow-x-auto rounded-2xl border border-border bg-surface p-2 no-scrollbar"
+          className="mx-auto mt-10 flex max-w-2xl gap-2 overflow-x-auto rounded-[1.25rem] border border-border bg-surface p-2 no-scrollbar"
         >
           {products.map((p, i) => {
             const selected = p.id === active;
@@ -107,7 +108,15 @@ export function ProductDeck() {
         </div>
 
         {/* ---------- Panels ---------- */}
-        <AnimatePresence mode="wait">
+        {/*
+          * The panel content must never depend on JS to become visible:
+          * a stalled mount animation would otherwise leave it stuck at
+          * opacity:0 until the next interaction. So the base element is a
+          * plain visible <div>; the switch animation is layered on by motion
+          * only as a non-blocking enhancement via `initial={false}` on first
+          * mount and a keyed fade on subsequent tab changes.
+          */}
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={current.id}
             role="tabpanel"
@@ -115,10 +124,10 @@ export function ProductDeck() {
             aria-labelledby={`${uid}-tab-${current.id}`}
             tabIndex={0}
             initial={reduce ? undefined : { opacity: 0, y: 16 }}
-            animate={reduce ? undefined : { opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 grid gap-8 rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-2"
+            className="mt-8 grid gap-8 rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-2"
           >
             {/* Left: copy + features */}
             <div>
@@ -187,24 +196,29 @@ export function ProductDeck() {
 
               <div className="grid grid-cols-3 gap-2">
                 {current.showcase.map((s) => (
-                  <a
+                  <SpotlightCard
                     key={s.src}
-                    href={s.src}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative block overflow-hidden rounded-lg border border-border"
+                    className="rounded-lg border border-border"
                   >
-                    <Image
-                      src={s.src}
-                      alt={t(`items.${current.id}.showcase.${s.key}`)}
-                      width={300}
-                      height={200}
-                      className="h-auto w-full transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/45 group-hover:opacity-100">
-                      <ExternalLink size={16} className="text-white" aria-hidden />
-                    </span>
-                  </a>
+                    <a
+                      href={s.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative block overflow-hidden"
+                    >
+                      <Image
+                        src={s.src}
+                        alt={t(`items.${current.id}.showcase.${s.key}`)}
+                        width={300}
+                        height={200}
+                        loading="lazy"
+                        className="h-auto w-full transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/45 group-hover:opacity-100">
+                        <ExternalLink size={16} className="text-white" aria-hidden />
+                      </span>
+                    </a>
+                  </SpotlightCard>
                 ))}
               </div>
             </div>

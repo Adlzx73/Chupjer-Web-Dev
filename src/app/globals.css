@@ -35,80 +35,116 @@
   --color-brand-tint: var(--cj-accent-tint);
   --color-brand-ring: var(--cj-accent-ring);
 
+  /* Warm secondary tint — texture & detail only */
+  --color-warm-tint: var(--cj-warm-tint);
+
   /* Product identity colours — stable across themes */
   --color-singgah: #10b981;
   --color-operations: #f97316;
   --color-pos: #6366f1;
 
-  --radius-card: 1rem;
-  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 0 0 1px var(--cj-border);
-  --shadow-elevated: 0 8px 32px rgb(15 23 42 / 0.08);
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(87 58 30 / 0.05), 0 0 0 1px var(--cj-border);
+  --shadow-elevated: 0 10px 36px rgb(87 58 30 / 0.1);
   --shadow-glow: 0 4px 20px var(--cj-accent-glow);
 }
 
-/* ---------- Light ---------- */
+/* ---------- Light (warm paper) ---------- */
 :root,
 [data-theme="light"] {
-  --cj-bg: #fafafb;
-  --cj-bg-alt: #f1f5f9;
-  --cj-surface: #ffffff;
-  --cj-surface-hover: #f8fafc;
-  --cj-border: #e2e8f0;
-  --cj-border-strong: #cbd5e1;
+  --cj-bg: #faf8f4;
+  --cj-bg-alt: #f3efe8;
+  --cj-surface: #fffefb;
+  --cj-surface-hover: #f7f3ec;
+  --cj-border: #e8e1d5;
+  --cj-border-strong: #d5cbb9;
 
-  --cj-ink: #0f172a;
-  --cj-ink-muted: #475569;
-  --cj-ink-subtle: #64748b;
+  --cj-ink: #1b1512;
+  --cj-ink-muted: #57504a;
+  --cj-ink-subtle: #7d756b;
 
   --cj-accent-brand: #ea580c;
   --cj-accent-brand-hover: #c2410c;
   --cj-accent-solid: #c2410c;
-  --cj-accent-tint: #fff7ed;
+  --cj-accent-tint: #fdf1e7;
   --cj-accent-ring: rgb(234 88 12 / 0.35);
-  --cj-accent-glow: rgb(234 88 12 / 0.12);
+  --cj-accent-glow: rgb(234 88 12 / 0.14);
+
+  /* Warm secondary tint — terracotta/sand for texture & detail */
+  --cj-warm-tint: #f4e6d7;
 }
 
-/* ---------- Dark ---------- */
+/* ---------- Dark (warm charcoal) ---------- */
 [data-theme="dark"] {
-  --cj-bg: #0b0f17;
-  --cj-bg-alt: #0f1420;
-  --cj-surface: #131722;
-  --cj-surface-hover: #1a1f2e;
-  --cj-border: #272e3f;
-  --cj-border-strong: #38425a;
+  --cj-bg: #131009;
+  --cj-bg-alt: #1a1610;
+  --cj-surface: #211c15;
+  --cj-surface-hover: #2a2419;
+  --cj-border: #352d20;
+  --cj-border-strong: #4d4230;
 
-  --cj-ink: #f8fafc;
-  --cj-ink-muted: #94a3b8;
-  --cj-ink-subtle: #7a879c;
+  --cj-ink: #faf7f2;
+  --cj-ink-muted: #b3a898;
+  --cj-ink-subtle: #8d8171;
 
   --cj-accent-brand: #fb923c;
   --cj-accent-brand-hover: #fdba74;
   --cj-accent-solid: #fb923c;
-  --cj-accent-tint: rgb(251 146 60 / 0.12);
+  --cj-accent-tint: rgb(251 146 60 / 0.14);
   --cj-accent-ring: rgb(251 146 60 / 0.45);
-  --cj-accent-glow: rgb(251 146 60 / 0.18);
+  --cj-accent-glow: rgb(251 146 60 / 0.2);
+
+  --cj-warm-tint: rgb(224 150 74 / 0.16);
 }
 
 /* System preference fallback when no explicit theme is stored */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --cj-bg: #0b0f17;
-    --cj-bg-alt: #0f1420;
-    --cj-surface: #131722;
-    --cj-surface-hover: #1a1f2e;
-    --cj-border: #272e3f;
-    --cj-border-strong: #38425a;
+    --cj-bg: #131009;
+    --cj-bg-alt: #1a1610;
+    --cj-surface: #211c15;
+    --cj-surface-hover: #2a2419;
+    --cj-border: #352d20;
+    --cj-border-strong: #4d4230;
 
-    --cj-ink: #f8fafc;
-    --cj-ink-muted: #94a3b8;
-    --cj-ink-subtle: #7a879c;
+    --cj-ink: #faf7f2;
+    --cj-ink-muted: #b3a898;
+    --cj-ink-subtle: #8d8171;
 
     --cj-accent-brand: #fb923c;
     --cj-accent-brand-hover: #fdba74;
     --cj-accent-solid: #fb923c;
-    --cj-accent-tint: rgb(251 146 60 / 0.12);
+    --cj-accent-tint: rgb(251 146 60 / 0.14);
     --cj-accent-ring: rgb(251 146 60 / 0.45);
-    --cj-accent-glow: rgb(251 146 60 / 0.18);
+    --cj-accent-glow: rgb(251 146 60 / 0.2);
+
+    --cj-warm-tint: rgb(224 150 74 / 0.16);
+  }
+}
+
+/* ---------- Theme toggle glyphs ----------
+   Both icons render in the DOM; the visible one follows data-theme via
+   CSS instead of React state, so the icon cannot flip between the
+   server-rendered paint and hydration. Icon mirrors the CURRENT theme
+   (moon in dark, sun in light). */
+.theme-icon-light,
+.theme-icon-dark {
+  display: none;
+}
+[data-theme="dark"] .theme-icon-dark {
+  display: block;
+}
+[data-theme="light"] .theme-icon-light {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-icon-dark {
+    display: block;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .theme-icon-light {
+    display: block;
   }
 }
 
@@ -124,6 +160,14 @@
     scroll-padding-top: 5.5rem;
   }
 
+  html,
+  body {
+    /* Backstop against any single overflowing section widening the page.
+       `clip` (vs `hidden`) does not create a scroll container, so
+       fixed/sticky children keep working. */
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--cj-bg);
     color: var(--cj-ink-muted);
@@ -137,7 +181,7 @@
   h4 {
     color: var(--cj-ink);
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   :focus-visible {
@@ -185,6 +229,49 @@
   border-radius: var(--radius-card);
 }
 
+/* Editorial eyebrow label — standardizes the ad-hoc uppercase eyebrows. */
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cj-accent-brand);
+}
+
+/*
+ * Subtle warm grain — a tiled SVG noise at very low opacity, layered over
+ * the section's own background with plain alpha compositing (no blend mode),
+ * so scrolling sections composite on the GPU instead of re-blending per-pixel.
+ * Apply sparingly (hero, pricing, demo CTA).
+ */
+@utility texture-warm {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--cj-grain-opacity, 0.05);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+}
+
+:root,
+[data-theme="light"] {
+  --cj-grain-opacity: 0.04;
+}
+[data-theme="dark"] {
+  --cj-grain-opacity: 0.05;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --cj-grain-opacity: 0.05;
+  }
+}
+
 /* Hides horizontal scrollbars on the mobile tab strip */
 @utility no-scrollbar {
   scrollbar-width: none;
@@ -192,4 +279,13 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/*
+ * Offscreen sections skip layout/paint until they scroll near the viewport.
+ * The intrinsic size hint avoids scrollbar jump on low-end devices.
+ */
+@utility content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }

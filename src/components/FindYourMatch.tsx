@@ -60,7 +60,7 @@ export function FindYourMatch() {
           subtitle={t("section.subtitle")}
         />
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8">
+        <div className="mx-auto mt-10 max-w-2xl rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8">
           {!matched ? (
             <>
               {/* Progress */}
@@ -78,10 +78,16 @@ export function FindYourMatch() {
                 {t("section.progress", { current: step + 1, total: quizSteps.length })}
               </p>
 
+              {/*
+                * Keep content visible by default; only animate on step
+                * changes, never on first mount. A stalled mount animation
+                * would otherwise leave the quiz stuck at opacity:0 until the
+                * user clicks an option.
+                */}
               <motion.div
                 key={quizSteps[step].id}
-                initial={reduce ? undefined : { opacity: 0, x: 20 }}
-                animate={reduce ? undefined : { opacity: 1, x: 0 }}
+                initial={reduce || step === 0 ? false : { opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3
@@ -126,8 +132,8 @@ export function FindYourMatch() {
           ) : (
             /* ---------- Result ---------- */
             <motion.div
-              initial={reduce ? undefined : { opacity: 0, scale: 0.97 }}
-              animate={reduce ? undefined : { opacity: 1, scale: 1 }}
+              initial={reduce ? false : { opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.35 }}
             >
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">

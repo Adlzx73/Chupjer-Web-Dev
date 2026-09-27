@@ -53,7 +53,7 @@ export function ComparisonMatrix() {
         />
 
         <Reveal>
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-border bg-surface shadow-card">
+          <div className="mt-10 contain-content overflow-x-auto rounded-[1.25rem] border border-border bg-surface shadow-card">
             <table className="w-full min-w-[560px] border-collapse text-left">
               <caption className="sr-only">
                 {t("section.caption")}

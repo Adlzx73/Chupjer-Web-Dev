@@ -89,7 +89,7 @@ export function RoiCalculator() {
           subtitle={t("section.subtitle")}
         />
 
-        <div className="mt-10 grid gap-6 rounded-2xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-[1fr_1fr]">
+        <div className="mt-10 grid gap-6 rounded-[1.25rem] border border-border bg-surface p-6 shadow-card sm:p-8 lg:grid-cols-[1fr_1fr]">
           {/* Inputs */}
           <div className="space-y-6">
             <Slider
